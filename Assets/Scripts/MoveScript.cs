@@ -41,8 +41,6 @@ public class MoveScript : MonoBehaviour
 
         Tile tile = null;
 
-        Debug.Log(Vector3.down);
-
         if (Physics.Raycast(target.transform.position, Vector3.down, out ray, 1))
         {
             tile = ray.collider.GetComponent<Tile>();
@@ -92,6 +90,14 @@ public class MoveScript : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+    public void Restart()
+    {
+        for (int i = 0; i < tiles.Length; i++)
+        {
+            Tile t = tiles[i].GetComponent<Tile>();
+            t.Restart();
         }
     }
 }
