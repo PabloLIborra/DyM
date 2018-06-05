@@ -80,9 +80,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4081129071478060}
   - component: {fileID: 95663668927121952}
+  - component: {fileID: 114566968316546064}
+  - component: {fileID: 114988041479345840}
   m_Layer: 0
   m_Name: Character_Elf
-  m_TagString: Untagged
+  m_TagString: player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1185,9 +1187,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1067053214699150}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.0504, y: 0.0752, z: -0.466}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4454075218006858}
   - {fileID: 4892008661235608}
@@ -2040,6 +2042,39 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114566968316546064
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1067053214699150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2abd6c3c3715dd4ea07992edab21855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthMax: 100
+  healthBar: {fileID: 0}
+  staminaMax: 20
+  staminaBar: {fileID: 0}
+--- !u!114 &114988041479345840
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1067053214699150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa6e15cd8ca41da4fa4fade60e53e16f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  move: 5
+  distJump: 2
+  moveSpeed: 2
+  moving: 0
+  raycast: 1
+  walkButton: 0
+  attackButton: 0
 --- !u!137 &137472929421929078
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
