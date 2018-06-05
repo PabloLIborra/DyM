@@ -8,26 +8,38 @@ ModelImporter:
     100004: Torus
     100006: Torus_001
     100008: Torus_002
+    100010: Goblin_001
+    100012: Peana
     400000: //RootNode
     400002: Goblin
     400004: Torus
     400006: Torus_001
     400008: Torus_002
+    400010: Goblin_001
+    400012: Peana
     2100000: Metal_1
     2100002: Goblin
     2100004: Metal_2
+    2100006: Plastic
+    2100008: Goblin_001
     2300000: Goblin
     2300002: Torus
     2300004: Torus_001
     2300006: Torus_002
+    2300008: Goblin_001
+    2300010: Peana
     3300000: Goblin
     3300002: Torus
     3300004: Torus_001
     3300006: Torus_002
+    3300008: Goblin_001
+    3300010: Peana
     4300000: Torus
     4300002: Goblin
     4300004: Torus_001
     4300006: Torus_002
+    4300008: Peana
+    4300010: Goblin_001
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}

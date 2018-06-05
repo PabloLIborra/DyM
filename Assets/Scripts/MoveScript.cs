@@ -8,6 +8,7 @@ public class MoveScript : MonoBehaviour
     public float distJump = 2;
     public float moveSpeed = 2;
     public bool moving = false;
+    public int raycast = 1;
 
     Vector3 speed = new Vector3();
     Vector3 heading = new Vector3();
@@ -45,7 +46,7 @@ public class MoveScript : MonoBehaviour
 
         Tile tile = null;
 
-        if (Physics.Raycast(target.transform.position, Vector3.down, out ray, 1))
+        if (Physics.Raycast(target.transform.position, Vector3.down, out ray, raycast))
         {
             tile = ray.collider.GetComponent<Tile>();
         }

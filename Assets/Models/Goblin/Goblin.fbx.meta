@@ -10,6 +10,7 @@ ModelImporter:
     100008: Torus
     100010: Torus.001
     100012: Torus.002
+    100014: Peana
     400000: Camera
     400002: //RootNode
     400004: Goblin
@@ -17,22 +18,27 @@ ModelImporter:
     400008: Torus
     400010: Torus.001
     400012: Torus.002
+    400014: Peana
     2000000: Camera
     2100000: Metal_1
     2100002: Goblin
     2100004: Metal_2
+    2100006: Plastic
     2300000: Goblin
     2300002: Torus
     2300004: Torus.001
     2300006: Torus.002
+    2300008: Peana
     3300000: Goblin
     3300002: Torus
     3300004: Torus.001
     3300006: Torus.002
+    3300008: Peana
     4300000: Torus
     4300002: Goblin
     4300004: Torus.001
     4300006: Torus.002
+    4300008: Peana
     10800000: Lamp
   externalObjects: {}
   materials:
