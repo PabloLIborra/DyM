@@ -40,15 +40,18 @@ public class PlayerMoveScript : MoveScript
 
     public void clickedWalk()
     {
-        if (walkButton == false)
+        if(!moving)
         {
-            walkButton = true;
-        }
-        else
-        {
-            walkButton = false;
-            RemoveSelectableTiles();
-        }        
+            if (walkButton == false)
+            {
+                walkButton = true;
+            }
+            else
+            {
+                walkButton = false;
+                RemoveSelectableTiles();
+            }
+        }     
     }
 
     void CheckMouse()
@@ -75,16 +78,19 @@ public class PlayerMoveScript : MoveScript
 
     public void clickedAttack()
     {
-        if (attackButton == false)
+        if(!moving)
         {
-            attackButton = true;
+            if (attackButton == false)
+            {
+                attackButton = true;
+            }
+            else
+            {
+                attackButton = false;
+            }
+            this.GetComponent<PlayerStatsScript>().UseStamina(4f);
+            this.GetComponent<PlayerStatsScript>().Damage(20f);
         }
-        else
-        {
-            attackButton = false;
-        }
-        this.GetComponent<PlayerStatsScript>().UseStamina(4f);
-        this.GetComponent<PlayerStatsScript>().Damage(20f);
     }
 
 }
