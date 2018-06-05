@@ -20,6 +20,9 @@ public class MoveScript : MonoBehaviour
 
     float half = 0;
 
+    protected bool lastMove = false;          //Use on Player Move Script to uncheck Button
+
+
     //Check the tiles and fill the array
     protected void Init()
     {
@@ -134,6 +137,8 @@ public class MoveScript : MonoBehaviour
 
                 transform.forward = heading;
                 transform.position += speed * Time.deltaTime;
+
+                lastMove = true;
             }
             else
             {

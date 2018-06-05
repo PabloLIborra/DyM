@@ -29,6 +29,12 @@ public class PlayerMoveScript : MoveScript
             {
                 Move();
             }
+
+            if(lastMove == true && moving == false)
+            {
+                walkButton = false;
+                lastMove = false;
+            }
         }
     }
 
@@ -41,7 +47,7 @@ public class PlayerMoveScript : MoveScript
         else
         {
             walkButton = false;
-            Restart();
+            RemoveSelectableTiles();
         }        
     }
 
