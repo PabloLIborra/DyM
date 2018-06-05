@@ -20,13 +20,21 @@ public class PlayerMoveScript : MoveScript
     {
         if (walkButton == true)
         {
-            FindGoTile();
+            if (!moving)
+            {
+                FindGoTile();
+                CheckMouse();
+            }
+            else
+            {
+                Move();
+            }
         }
     }
 
     public void clickedWalk()
     {
-        if(walkButton == false)
+        if (walkButton == false)
         {
             walkButton = true;
         }
@@ -34,6 +42,28 @@ public class PlayerMoveScript : MoveScript
         {
             walkButton = false;
             Restart();
+        }        
+    }
+
+    void CheckMouse()
+    {
+        if(Input.GetMouseButtonUp(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit hit;
+            if(Physics.Raycast(ray, out hit))
+            {
+                if(hit.collider.tag == "Tile")
+                {
+                    Tile t = hit.collider.GetComponent<Tile>();
+
+                    if(t.go)
+                    {
+                        MoveToTile(t);
+                    }
+                }
+            }
         }
     }
 

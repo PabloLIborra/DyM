@@ -30,13 +30,13 @@ public class Tile : MonoBehaviour
         {
             this.GetComponent<Renderer>().material.color = Color.cyan;
         }
-        else if (go == true)    //Where we can go
-        {
-            this.GetComponent<Renderer>().material.color = Color.red;
-        }
         else if (target == true)    //Where we are going
         {
             this.GetComponent<Renderer>().material.color = Color.green;
+        }
+        else if (go == true)    //Where we can go
+        {
+            this.GetComponent<Renderer>().material.color = Color.red;
         }
         else    //Rest of boxes
         {
