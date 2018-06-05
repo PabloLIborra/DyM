@@ -7,6 +7,7 @@ public class MoveScript : MonoBehaviour
     public int move = 5;
     public float distJump = 2;
     public float moveSpeed = 2;
+    public bool moving = false;
 
     Vector3 speed = new Vector3();
     Vector3 heading = new Vector3();
@@ -93,5 +94,76 @@ public class MoveScript : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void MoveToTile(Tile tile)
+    {
+        tile.target = true;
+        moving = true;
+        stack.Clear();
+
+        Tile next = tile;
+        while(next != null)
+        {
+            stack.Push(next);
+            next = next.parent;
+        }
+    }
+
+    public void Move()
+    {
+        if(stack.Count > 0)
+        {
+            Tile t = stack.Peek();
+            Vector3 pos = t.transform.position;
+
+            pos.y += half;
+
+            if(Vector3.Distance(transform.position, pos) >= 0.05f)
+            {
+                calculateHeading(pos);
+                setHorizontalVelocity();
+
+                transform.forward = heading;
+                transform.position += speed * Time.deltaTime;
+            }
+            else
+            {
+                transform.position = pos;
+                stack.Pop();
+            }
+        }
+        else
+        {   
+            RemoveSelectableTiles();
+            moving = false;
+        }
+    }
+
+    protected void RemoveSelectableTiles()
+    {
+        if(currentTile != null)
+        {
+            currentTile.target = false;
+            currentTile = null;
+        }
+
+        foreach (Tile tile in selectTiles)
+        {
+            tile.Restart();
+        }
+
+        selectTiles.Clear();
+    }
+
+    void calculateHeading(Vector3 target)
+    {
+        heading = target - transform.position;
+        heading.Normalize();
+    }
+    
+    void setHorizontalVelocity()
+    {
+        speed = heading * moveSpeed;
     }
 }
