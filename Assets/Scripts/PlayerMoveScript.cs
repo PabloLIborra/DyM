@@ -88,7 +88,7 @@ public class PlayerMoveScript : MoveScript
             {
                 attackButton = false;
             }
-            this.GetComponent<PlayerStatsScript>().UseStamina(4f);
+            this.GetComponent<PlayerStatsScript>().UseStamina(1f);
             this.GetComponent<PlayerStatsScript>().Damage(20f);
         }
     }

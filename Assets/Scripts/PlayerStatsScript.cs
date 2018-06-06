@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class PlayerStatsScript : StatsScript
 {
 
-    float stamina = 50;
-    public float staminaMax = 50;
+    float stamina = 5;
+    public float staminaMax = 5;
     public Scrollbar staminaBar;
 
     float useStamina = 0;
@@ -24,9 +24,9 @@ public class PlayerStatsScript : StatsScript
         update();
         if (useStamina > 0)
         {
-            if (stamina - 1 >= 0)
+            if (stamina - (staminaMax * 0.01f) >= 0)
             {
-                stamina -= 1;
+                stamina -= (staminaMax * 0.01f);
             }
             else
             {
@@ -34,7 +34,7 @@ public class PlayerStatsScript : StatsScript
             }
 
             staminaBar.size = stamina / staminaMax;
-            useStamina--;
+            useStamina -= (staminaMax * 0.01f);
         }
         if (stamina == 0)
             ResetStamina();

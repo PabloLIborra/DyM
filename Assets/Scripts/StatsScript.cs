@@ -22,9 +22,9 @@ public class StatsScript : MonoBehaviour
     {
         if(damage > 0)
         {
-            if (health - 1 >= 0)
+            if (health - (healthMax * 0.01f) >= 0)
             {
-                health -= 1;
+                health -= (healthMax * 0.01f);
             }
             else
             {
@@ -32,7 +32,7 @@ public class StatsScript : MonoBehaviour
             }
 
             healthBar.size = health / healthMax;
-            damage--;
+            damage -= (healthMax * 0.01f);
         }
         if(health == 0)
             Revive();
