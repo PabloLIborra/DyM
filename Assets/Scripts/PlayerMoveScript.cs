@@ -18,7 +18,7 @@ public class PlayerMoveScript : MoveScript
 	// Update is called once per frame
 	void Update ()
     {
-        if (walkButton == true)
+        if (walkButton == true && Time.timeScale > 0)
         {
             if (!moving)
             {
@@ -40,7 +40,7 @@ public class PlayerMoveScript : MoveScript
 
     public void clickedWalk()
     {
-        if(!moving)
+        if(!moving && Time.timeScale > 0)
         {
             if (walkButton == false)
             {
@@ -78,7 +78,7 @@ public class PlayerMoveScript : MoveScript
 
     public void clickedAttack()
     {
-        if(!moving)
+        if(!moving && Time.timeScale > 0)
         {
             if (attackButton == false)
             {
