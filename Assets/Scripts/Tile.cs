@@ -8,6 +8,7 @@ public class Tile : MonoBehaviour
     public bool actual = false;
     public bool target = false;
     public bool go = false;
+    public bool obstacle = false;
 
     public List<Tile> adjList = new List<Tile>();
 
@@ -78,7 +79,7 @@ public class Tile : MonoBehaviour
         for (int i = 0; i < coll.Length; i++)
         {
             Tile tile = coll[i].GetComponent<Tile>();
-            if(tile != null && tile.walk == true)
+            if(tile != null && tile.walk == true && tile.obstacle == false)
             {
                 RaycastHit ray;
                 if (Physics.Raycast(tile.transform.position, Vector3.up, out ray, 1) == false)
