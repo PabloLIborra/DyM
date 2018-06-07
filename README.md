@@ -1,4 +1,5 @@
 # DyM 
 (Dragones y Mamporros)
 
-Proyecto de 4º de Ingenieria Multimedia para la asignatura de Realidad Virtual
+Proyecto de la asignatura Realidad Virtual, 4º Ingenieria Multimedia 2017-2018
+
