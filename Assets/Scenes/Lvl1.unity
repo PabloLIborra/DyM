@@ -215,6 +215,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -389,6 +390,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -495,6 +497,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -723,6 +726,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -896,7 +900,8 @@ MonoBehaviour:
   actual: 0
   target: 0
   go: 0
-  obstacle: 1
+  obstacle: 0
+  npc: {fileID: 1349887731}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -1057,6 +1062,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -1163,6 +1169,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -1269,6 +1276,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -1375,6 +1383,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -1815,6 +1824,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -1921,6 +1931,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -2027,6 +2038,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -2255,6 +2267,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -2399,6 +2412,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -2505,6 +2519,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -2611,6 +2626,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -2717,6 +2733,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -2823,6 +2840,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -2929,6 +2947,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -3035,6 +3054,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -3141,6 +3161,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -3247,6 +3268,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -3353,6 +3375,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -3459,6 +3482,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -3565,6 +3589,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -3671,6 +3696,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -3777,6 +3803,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -3883,6 +3910,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -3989,6 +4017,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -4170,6 +4199,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -4276,6 +4306,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -4382,6 +4413,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -4562,6 +4594,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -4668,6 +4701,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -4895,6 +4929,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -5088,6 +5123,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -5194,6 +5230,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -5548,6 +5585,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -5654,6 +5692,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -5798,6 +5837,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -5966,6 +6006,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -6072,6 +6113,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -6178,6 +6220,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -6382,6 +6425,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -6488,6 +6532,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -6594,6 +6639,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -6700,6 +6746,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -6806,6 +6853,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -6912,6 +6960,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -7214,6 +7263,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -7320,6 +7370,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -7464,6 +7515,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -7570,6 +7622,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -7676,6 +7729,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -7797,6 +7851,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -7903,6 +7958,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -8009,6 +8065,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -8115,6 +8172,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -8221,6 +8279,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -8327,6 +8386,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -8433,6 +8493,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -8539,6 +8600,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -8713,6 +8775,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -8819,6 +8882,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -8925,6 +8989,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -9031,6 +9096,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -9137,6 +9203,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -9389,6 +9456,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -9495,6 +9563,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -9601,6 +9670,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -9707,6 +9777,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -9813,6 +9884,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -9919,6 +9991,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -10025,6 +10098,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -10213,6 +10287,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -10450,6 +10525,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -10624,6 +10700,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -10768,6 +10845,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -10874,6 +10952,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -10980,6 +11059,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -11086,6 +11166,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -11192,6 +11273,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -11298,6 +11380,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -11404,6 +11487,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -11510,6 +11594,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -11616,6 +11701,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -11722,6 +11808,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -11953,6 +12040,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -12059,6 +12147,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -12228,6 +12317,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -12334,6 +12424,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -12440,6 +12531,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -12705,6 +12797,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -12811,6 +12904,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -12917,6 +13011,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -13062,6 +13157,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -13168,6 +13264,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -13274,6 +13371,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -13566,6 +13664,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}
@@ -13672,6 +13771,7 @@ MonoBehaviour:
   target: 0
   go: 0
   obstacle: 0
+  npc: {fileID: 0}
   adjList: []
   visited: 0
   parent: {fileID: 0}

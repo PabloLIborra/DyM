@@ -23,20 +23,23 @@ public class MoveScript : MonoBehaviour
 
     protected bool lastMove = false;          //Use on Player Move Script to uncheck Button
 
-
     //Check the tiles and fill the array
     protected void Init()
     {
         tiles = GameObject.FindGameObjectsWithTag("Tile");
 
         half = this.GetComponent<Collider>().bounds.extents.y;
+        currentTile = GetTargetTile(gameObject);
+        currentTile.npc = gameObject;
+
     }
 
     //Take actual tile and draw the box
     public void GetCurrentTile()
     {
-        currentTile = GetTargetTile(gameObject); 
+        currentTile = GetTargetTile(gameObject);
         currentTile.actual = true;                  //This draw the box where we are
+        currentTile.npc = gameObject;
     }
 
     //Use a raycast to check tile under the player
@@ -77,9 +80,10 @@ public class MoveScript : MonoBehaviour
         while(process.Count > 0)
         {
             Tile t = process.Dequeue();
+
             selectTiles.Add(t);
             t.go = true;
-
+            
             if (t.dist < move)
             {
                 for (int i = 0; i < t.adjList.Count; i++)
@@ -97,16 +101,6 @@ public class MoveScript : MonoBehaviour
             }
         }
     }
-
-    public void Restart()
-    {
-        for (int i = 0; i < tiles.Length; i++)
-        {
-            Tile t = tiles[i].GetComponent<Tile>();
-            t.Restart();
-        }
-    }
-
 
     public void MoveToTile(Tile tile)
     {
@@ -144,6 +138,10 @@ public class MoveScript : MonoBehaviour
             else
             {
                 transform.position = pos;
+                if (stack.Count == 1)
+                {
+                    t.npc = gameObject;
+                }
                 stack.Pop();
             }
         }
@@ -156,16 +154,26 @@ public class MoveScript : MonoBehaviour
 
     protected void RemoveSelectableTiles()
     {
-        if(currentTile != null)
+        currentTile = GetTargetTile(gameObject);
+
+        foreach (Tile tile in selectTiles)
+        {
+            if(tile != currentTile)
+            {
+                tile.Restart(gameObject, true);
+            }
+            else
+            {
+                tile.Restart(gameObject, false);
+            }
+        }
+
+        if (currentTile != null)
         {
             currentTile.target = false;
             currentTile = null;
         }
 
-        foreach (Tile tile in selectTiles)
-        {
-            tile.Restart();
-        }
 
         selectTiles.Clear();
     }
