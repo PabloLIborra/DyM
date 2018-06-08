@@ -6,15 +6,31 @@ ModelImporter:
     100000: //RootNode
     100002: Cube
     100004: Field
+    100006: Diablo
+    100008: Diablo_safe
+    100010: Diablo_safe2
     400000: //RootNode
     400002: Cube
     400004: Field
+    400006: Diablo
+    400008: Diablo_safe
+    400010: Diablo_safe2
     2100000: unnamed
     2300000: Cube
+    2300002: Diablo
+    2300004: Diablo_safe
+    2300006: Diablo_safe2
     3300000: Cube
+    3300002: Diablo
+    3300004: Diablo_safe
+    3300006: Diablo_safe2
     4300000: Cube
+    4300002: Diablo_safe2
+    4300004: Diablo_safe
+    4300006: Diablo
     7400000: Default Take
     9500000: //RootNode
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1
