@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class StatsScript : MonoBehaviour
 {
 
-    float health = 50;
+    public float health = 50;
     public float healthMax = 50;
     public Scrollbar healthBar;
 

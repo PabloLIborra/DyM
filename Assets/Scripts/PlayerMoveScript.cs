@@ -67,8 +67,19 @@ public class PlayerMoveScript : MoveScript
                 {
                     Tile t = hit.collider.GetComponent<Tile>();
 
-                    if(t.go)
+                    //Here we calculate how much stamina use
+                    PlayerStatsScript playerStats = gameObject.GetComponent<PlayerStatsScript>();
+                    int useStamina = 0;
+                    Tile tile = t;
+                    for (int i = 0; i < move && tile.parent != null; i++)
                     {
+                        tile = t.parent;
+                        useStamina++;
+                    }
+
+                    if (t.go && playerStats.stamina >= useStamina)
+                    {
+                        playerStats.UseStamina((float)useStamina);
                         MoveToTile(t);
                     }
                 }

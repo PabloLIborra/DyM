@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +7,7 @@ using UnityEngine.UI;
 public class PlayerStatsScript : StatsScript
 {
 
-    float stamina = 5;
+    public float stamina = 5;
     public float staminaMax = 5;
     public Scrollbar staminaBar;
 
@@ -22,7 +23,7 @@ public class PlayerStatsScript : StatsScript
     private void Update()
     {
         update();
-        if (useStamina > 0)
+        if (useStamina > 0 && (useStamina -(staminaMax * 0.01f)) > 0)
         {
             if (stamina - (staminaMax * 0.01f) >= 0)
             {
@@ -36,8 +37,16 @@ public class PlayerStatsScript : StatsScript
             staminaBar.size = stamina / staminaMax;
             useStamina -= (staminaMax * 0.01f);
         }
+        else
+        {
+            useStamina = 0;
+            stamina = (float)Math.Round(stamina, 0);
+        }
+        /*
         if (stamina == 0)
+        {
             ResetStamina();
+        }*/
     }
 
     public void UseStamina(float stm)

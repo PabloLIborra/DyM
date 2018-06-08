@@ -12198,8 +12198,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2abd6c3c3715dd4ea07992edab21855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 50
   healthMax: 150
   healthBar: {fileID: 695765744}
+  stamina: 5
   staminaMax: 5
   staminaBar: {fileID: 958653146}
 --- !u!136 &1743170541
