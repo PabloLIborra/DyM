@@ -18,7 +18,7 @@ public class PlayerMoveScript : MoveScript
 	// Update is called once per frame
 	void Update ()
     {
-        if (walkButton == true)
+        if (walkButton == true && turn)
         {
             if (!moving)
             {
