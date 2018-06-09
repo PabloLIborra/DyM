@@ -19,6 +19,10 @@ public class Tile : MonoBehaviour
     public Tile parent = null;
     public int dist = 0;
 
+    //For A*
+    public float f = 0;
+    public float g = 0;
+    public float h = 0;
 
 	// Use this for initialization
 	void Start ()
@@ -70,21 +74,23 @@ public class Tile : MonoBehaviour
         visited = false;
         parent = null;
         dist = 0;
+
+        f = g = h = 0;
     }
 
     //Check again the neighbors according to new tile where we are
-    public void Neighbors(float distJump)
+    public void Neighbors(float distJump, Tile target)
     {
         Restart(npc, false);
 
-        checkTile(Vector3.forward, distJump);
-        checkTile(-Vector3.forward, distJump);
-        checkTile(Vector3.right, distJump);
-        checkTile(-Vector3.right, distJump);
+        checkTile(Vector3.forward, distJump, target);
+        checkTile(-Vector3.forward, distJump, target);
+        checkTile(Vector3.right, distJump, target);
+        checkTile(-Vector3.right, distJump, target);
     }
 
     //We use a raycast to check the diferents boxes around us
-    public void checkTile(Vector3 dir, float distJump)  
+    public void checkTile(Vector3 dir, float distJump, Tile target)  
     {
         Vector3 half = new Vector3(0.25f, (1 + distJump)/2.0f, 0.25f);
         Collider[] coll = Physics.OverlapBox(transform.position + dir, half);
@@ -95,7 +101,7 @@ public class Tile : MonoBehaviour
             if(tile != null && tile.walk == true && tile.obstacle == false && tile.npc == null)
             {
                 RaycastHit ray;
-                if (Physics.Raycast(tile.transform.position, Vector3.up, out ray, 1) == false)
+                if (Physics.Raycast(tile.transform.position, Vector3.up, out ray, 1) == false || (tile == target))
                 {
                     adjList.Add(tile);
                 }

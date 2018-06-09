@@ -19,7 +19,7 @@ public class PlayerMoveScript : MoveScript
 	void Update ()
     {
         //WALK
-        if (walkButton == true && Time.timeScale > 0)
+        if (walkButton == true && Time.timeScale > 0 && turn)
         {
             if (!moving)
             {

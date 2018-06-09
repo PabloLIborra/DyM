@@ -8,6 +8,7 @@ TagManager:
   - player
   - Walk Button
   - Attack Button
+  - Enemy
   layers:
   - Default
   - TransparentFX

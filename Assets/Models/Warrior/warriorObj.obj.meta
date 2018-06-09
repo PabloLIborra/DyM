@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 13c192338ce46d54782b4726a8a18daf
+guid: 5195758aa542f0d4a892c635cb148fc1
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -9,10 +9,10 @@ ModelImporter:
     400002: //RootNode
     2100000: Plastic
     2100002: Plastic_NONE
-    2100004: None
     2300000: default
     3300000: default
     4300000: default
+    9500000: //RootNode
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
@@ -89,7 +89,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

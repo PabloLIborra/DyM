@@ -1,61 +1,56 @@
 fileFormatVersion: 2
-guid: 64fcbae65b5889046b7a93e696a21ed2
+guid: cbf0745ddd9f08349b68c6d62a09e7d3
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Cylinder
-    100004: Floor_basic
-    100006: Obstacle_1
-    100008: Obstacle_2
-    100010: Rock_1
-    100012: Rock_1_2
-    100014: Rock_2
-    100016: Obstacle_3
-    100018: Obstacle_3_1
+    100002: Floor_basic
+    100004: Obstacle_1
+    100006: Obstacle_2
+    100008: Obstacle_3
+    100010: Obstacle_3_1
+    100012: Rock_1
+    100014: Rock_1_2
+    100016: Rock_2
     400000: //RootNode
-    400002: Cylinder
-    400004: Floor_basic
-    400006: Obstacle_1
-    400008: Obstacle_2
-    400010: Rock_1
-    400012: Rock_1_2
-    400014: Rock_2
-    400016: Obstacle_3
-    400018: Obstacle_3_1
+    400002: Floor_basic
+    400004: Obstacle_1
+    400006: Obstacle_2
+    400008: Obstacle_3
+    400010: Obstacle_3_1
+    400012: Rock_1
+    400014: Rock_1_2
+    400016: Rock_2
     2100000: Metal_1
     2100002: Maderita_Barril
     2100004: Piedra3_2
     2100006: Tierra_2
     2100008: Piedra_3
     2100010: Piedra_3_1
-    2300000: Cylinder
-    2300002: Floor_basic
-    2300004: Obstacle_1
-    2300006: Obstacle_2
-    2300008: Rock_1
-    2300010: Rock_1_2
-    2300012: Rock_2
-    2300014: Obstacle_3
-    2300016: Obstacle_3_1
-    3300000: Cylinder
-    3300002: Floor_basic
-    3300004: Obstacle_1
-    3300006: Obstacle_2
-    3300008: Rock_1
-    3300010: Rock_1_2
-    3300012: Rock_2
-    3300014: Obstacle_3
-    3300016: Obstacle_3_1
-    4300000: Cylinder
-    4300002: Obstacle_2
-    4300004: Obstacle_1
-    4300006: Rock_2
-    4300008: Floor_basic
-    4300010: Rock_1_2
-    4300012: Rock_1
-    4300014: Obstacle_3_1
-    4300016: Obstacle_3
+    2300000: Floor_basic
+    2300002: Obstacle_1
+    2300004: Obstacle_2
+    2300006: Obstacle_3
+    2300008: Obstacle_3_1
+    2300010: Rock_1
+    2300012: Rock_1_2
+    2300014: Rock_2
+    3300000: Floor_basic
+    3300002: Obstacle_1
+    3300004: Obstacle_2
+    3300006: Obstacle_3
+    3300008: Obstacle_3_1
+    3300010: Rock_1
+    3300012: Rock_1_2
+    3300014: Rock_2
+    4300000: Obstacle_3_1
+    4300002: Obstacle_3
+    4300004: Obstacle_2
+    4300006: Obstacle_1
+    4300008: Rock_2
+    4300010: Floor_basic
+    4300012: Rock_1_2
+    4300014: Rock_1
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}
