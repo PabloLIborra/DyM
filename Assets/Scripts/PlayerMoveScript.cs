@@ -18,6 +18,7 @@ public class PlayerMoveScript : MoveScript
 	// Update is called once per frame
 	void Update ()
     {
+        //WALK
         if (walkButton == true && Time.timeScale > 0)
         {
             if (!moving)
@@ -35,6 +36,12 @@ public class PlayerMoveScript : MoveScript
                 walkButton = false;
                 lastMove = false;
             }
+        }
+
+        //ATTACK
+        if (attackButton == true && Time.timeScale > 0)
+        {
+           
         }
     }
 
@@ -68,7 +75,7 @@ public class PlayerMoveScript : MoveScript
                     Tile t = hit.collider.GetComponent<Tile>();
 
                     //Here we calculate how much stamina use
-                    PlayerStatsScript playerStats = gameObject.GetComponent<PlayerStatsScript>();
+                    StatsScript stats = gameObject.GetComponent<StatsScript>();
                     int useStamina = 0;
                     Tile tile = t;
                     for (int i = 0; i < move && tile.parent != null; i++)
@@ -77,9 +84,9 @@ public class PlayerMoveScript : MoveScript
                         useStamina++;
                     }
 
-                    if (t.go && playerStats.stamina >= useStamina)
+                    if (t.go && stats.stamina >= useStamina)
                     {
-                        playerStats.UseStamina((float)useStamina);
+                        stats.UseStamina((float)useStamina);
                         MoveToTile(t);
                     }
                 }
