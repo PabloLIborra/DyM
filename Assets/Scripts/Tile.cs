@@ -8,6 +8,9 @@ public class Tile : MonoBehaviour
     public bool actual = false;
     public bool target = false;
     public bool go = false;
+    public bool obstacle = false;
+
+    public GameObject npc = null;
 
     public List<Tile> adjList = new List<Tile>();
 
@@ -41,6 +44,10 @@ public class Tile : MonoBehaviour
         }
         else if (go == true)    //Where we can go
         {
+            this.GetComponent<Renderer>().material.color = Color.magenta;
+        }
+        else if (npc != null && actual == false)    //Where we can go
+        {
             this.GetComponent<Renderer>().material.color = Color.red;
         }
         else    //Rest of boxes
@@ -50,13 +57,19 @@ public class Tile : MonoBehaviour
     }
 
     //Reset the variables.
-    public void Restart()
+    public void Restart(GameObject player, bool enter)
     {
         adjList.Clear();
 
         actual = false;
         target = false;
         go = false;
+
+        if (npc == player && enter == true)
+        {
+            npc = null;
+        }
+
 
         visited = false;
         parent = null;
@@ -68,7 +81,7 @@ public class Tile : MonoBehaviour
     //Check again the neighbors according to new tile where we are
     public void Neighbors(float distJump, Tile target)
     {
-        Restart();
+        Restart(npc, false);
 
         checkTile(Vector3.forward, distJump, target);
         checkTile(-Vector3.forward, distJump, target);
@@ -85,7 +98,7 @@ public class Tile : MonoBehaviour
         for (int i = 0; i < coll.Length; i++)
         {
             Tile tile = coll[i].GetComponent<Tile>();
-            if(tile != null && tile.walk == true)
+            if(tile != null && tile.walk == true && tile.obstacle == false && tile.npc == null)
             {
                 RaycastHit ray;
                 if (Physics.Raycast(tile.transform.position, Vector3.up, out ray, 1) == false || (tile == target))
