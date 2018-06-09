@@ -17,11 +17,8 @@ public class NPCMove : MoveScript {
         {
             if (!moving)
             {
-                Debug.Log("Entra");
 				FindNearestTarget();
-                Debug.Log("Aqui si");
 				CalculatePath();
-                Debug.Log("Aqui bien");
                 FindGoTile();
                 actualTargetTile.target = true;
             }

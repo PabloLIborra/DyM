@@ -60,6 +60,22 @@ public class MenuDrawScript
 
         }
     }
+
+    [MenuItem("Scripts/Rename Tiles Script")]    //RemoveTileScript
+    public static void RenameTileScript()
+    {
+        GameObject[] rows = GameObject.FindGameObjectsWithTag("Row");
+
+        for (int i = 0; i < rows.Length; i++)
+        {
+            rows[i].name = "Row" + i;
+            for (int x = 0; x < rows[i].transform.childCount; x++)
+            {
+                rows[i].transform.GetChild(x).name = "Tile" + i + x;
+            }
+        }
+        
+    }
 }
 
 #endif

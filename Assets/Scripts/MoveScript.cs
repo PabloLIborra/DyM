@@ -210,7 +210,6 @@ public class MoveScript : MonoBehaviour
         }
 
         list.Remove(lowest);
-
         return lowest;
     }
 
@@ -251,13 +250,12 @@ public class MoveScript : MonoBehaviour
         currentTile.h = Vector3.Distance(currentTile.transform.position, target.transform.position);
         currentTile.f = currentTile.h;
 
-        while(openList.Count > 0)
+        while (openList.Count > 0)
         {
             Tile t = FindLowestF(openList);
-
+            
             closedList.Add(t);
-
-            if(t == target)
+            if (t == target)
             {
                 actualTargetTile = FindEndTile(t);
                 MoveToTile(actualTargetTile);

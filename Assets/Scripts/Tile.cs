@@ -81,7 +81,7 @@ public class Tile : MonoBehaviour
     //Check again the neighbors according to new tile where we are
     public void Neighbors(float distJump, Tile target)
     {
-        Restart(npc, false);
+        Restart(npc, true);             //ToDo:: CAMBIAR, NO TIENE QUE SER TRUE, PERO EN FALSE NO VA LA IA
 
         checkTile(Vector3.forward, distJump, target);
         checkTile(-Vector3.forward, distJump, target);
@@ -98,6 +98,7 @@ public class Tile : MonoBehaviour
         for (int i = 0; i < coll.Length; i++)
         {
             Tile tile = coll[i].GetComponent<Tile>();
+            //npc = null;
             if(tile != null && tile.walk == true && tile.obstacle == false && tile.npc == null)
             {
                 RaycastHit ray;
