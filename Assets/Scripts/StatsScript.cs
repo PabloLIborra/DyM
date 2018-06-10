@@ -20,6 +20,8 @@ public class StatsScript : MonoBehaviour
     float useStamina = 0;
     float damage = 0;
 
+    public int attackDmg = 1;
+
     private void Start()
     {
         health = healthMax;
@@ -30,6 +32,7 @@ public class StatsScript : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(health);
         //DAMAGE
         if (damage > 0 && (damage - (healthMax * multiplierHealth)) >= 0)
         {
@@ -110,6 +113,11 @@ public class StatsScript : MonoBehaviour
     {
         stamina = staminaMax;
         staminaBar.size = stamina / staminaMax;
+    }
+
+    public float getDamage()
+    {
+        return damage;
     }
 
 }

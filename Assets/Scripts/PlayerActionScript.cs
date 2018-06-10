@@ -41,13 +41,27 @@ public class PlayerActionScript : ActionScript
         //ATTACK
         if (attackButton == true && Time.timeScale > 0 && turn)
         {
-            FindAttackTile();
+            if (!attacking)
+            {
+                FindAttackTile();
+                CheckMouse();
+            }
+            else
+            {
+                Attack();
+            }
+
+            if(lastMove == true && attacking == false)
+            {
+                attackButton = false;
+                lastMove = false;
+            }
         }
     }
 
     public void clickedWalk()
     {
-        if(!moving && attackButton == false && Time.timeScale > 0)
+        if(!moving && attackButton == false && Time.timeScale > 0 && turn)
         {
             if (walkButton == false)
             {
@@ -63,7 +77,7 @@ public class PlayerActionScript : ActionScript
 
     public void clickedAttack()
     {
-        if (!moving && walkButton == false && Time.timeScale > 0)
+        if (!attacking && walkButton == false && Time.timeScale > 0 && turn)
         {
             if (attackButton == false)
             {
@@ -79,7 +93,7 @@ public class PlayerActionScript : ActionScript
 
     public void clickedTurn()
     {
-        if (!moving && Time.timeScale > 0)
+        if (!moving && Time.timeScale > 0 && turn)
         {
             this.GetComponent<StatsScript>().ResetStamina();
             TurnManager.EndTurn();
@@ -97,15 +111,40 @@ public class PlayerActionScript : ActionScript
             RaycastHit hit;
             if(Physics.Raycast(ray, out hit))
             {
-                if(hit.collider.tag == "Tile")
+                if(hit.collider.tag == "Tile" || hit.collider.tag == "Enemy")
                 {
-                    Tile t = hit.collider.GetComponent<Tile>();
-
+                    Tile t;
+                    if (hit.collider.tag == "Enemy")
+                    {
+                        t = hit.collider.GetComponent<ActionScript>().currentTile;
+                        if(t == null)
+                        {
+                            t = hit.collider.GetComponent<ActionScript>().actualTargetTile;
+                        }
+                    }
+                    else
+                    {
+                        t = hit.collider.GetComponent<Tile>();
+                    }
                     
-                    if (t.go)
+                    
+                    if (t != null && t.go)
                     {
                         MoveToTile(t);
                     }
+                    else if(t != null && t.attack)
+                    {
+                        AttackToTile(t);
+                    }
+                }
+                else if(hit.collider.tag == "player")
+                {
+                    Tile t = hit.collider.GetComponent<ActionScript>().currentTile;
+                    if (t == null)
+                    {
+                        t = hit.collider.GetComponent<ActionScript>().actualTargetTile;
+                    }
+                    t.failAttack = true;
                 }
             }
         }

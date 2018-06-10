@@ -10,6 +10,7 @@ public class Tile : MonoBehaviour
     public bool go = false;
     public bool obstacle = false;
     public bool attack = false;
+    public bool failAttack = false;
 
     public GameObject npc = null;
 
@@ -35,34 +36,35 @@ public class Tile : MonoBehaviour
     //We draw boxes according the player position
 	void Update ()
     {
-        if(actual == true && attack == false)  //Where we are
+        if(actual == true && failAttack == false)
         {
             this.GetComponent<Renderer>().material.color = Color.cyan;
         }
-        else if (actual == true && attack == true)  //Where we are
+        else if (actual == true && attack == false) 
         {
             this.GetComponent<Renderer>().material.color = Color.red;
         }
-        else if (target == true)    //Where we are going
+        else if (target == true || (npc != null && npc.GetComponent<StatsScript>().getDamage() != 0))   
         {
             this.GetComponent<Renderer>().material.color = Color.green;
         }
-        else if (go == true)    //Where we can go
+        else if (go == true)   
         {
             this.GetComponent<Renderer>().material.color = Color.magenta;
         }
-        else if (npc != null && actual == false && attack == false)    //Where we can go
+        else if ((npc != null && actual == false && attack == false) || failAttack == true)  
         {
             this.GetComponent<Renderer>().material.color = Color.red;
         }
-        else if(attack == true)
+        else if (attack == true)
         {
             this.GetComponent<Renderer>().material.color = Color.blue;
         }
-        else    //Rest of boxes
+        else    
         {
             this.GetComponent<Renderer>().material.color = Color.white;
         }
+
     }
 
     //Reset the variables.
@@ -75,6 +77,7 @@ public class Tile : MonoBehaviour
         go = false;
 
         attack = false;
+        failAttack = false;
 
         if (npc == player && enter == true)
         {
@@ -120,7 +123,7 @@ public class Tile : MonoBehaviour
         {
             Tile tile = coll[i].GetComponent<Tile>();
             //npc = null;
-            if(tile != null && tile.walk == true && tile.obstacle == false/* && tile.npc == null*/)
+            if(tile != null && tile.walk == true && tile.obstacle == false)
             {
                 RaycastHit ray;
                 if (Physics.Raycast(tile.transform.position, Vector3.up, out ray, 1) == false || (tile == target))
@@ -140,10 +143,11 @@ public class Tile : MonoBehaviour
         {
             Tile tile = coll[i].GetComponent<Tile>();
             //npc = null;
-            if (tile != null && tile.walk == true && tile.obstacle == false && tile.npc == null)
+            if (tile != null && tile.walk == true && tile.obstacle == false)
             {
+                
                 RaycastHit ray;
-                if (Physics.Raycast(tile.transform.position, Vector3.up, out ray, 1) == false || (tile == target))
+                if (Physics.Raycast(tile.transform.position, Vector3.up, out ray, 1) == false || (tile == target) || tile.npc != null)
                 {
                     adjList.Add(tile);
                 }

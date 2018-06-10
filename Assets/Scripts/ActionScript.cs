@@ -8,9 +8,13 @@ public class ActionScript : MonoBehaviour
     public bool turn = false;
     public int move = 5;
     public float distJump = 2;
+    public int distAttack = 2;
     public float moveSpeed = 2;
     public bool moving = false;
+    public bool attacking = false;
     public int raycast = 1;
+
+    public int attackCost = 3;
 
     Vector3 speed = new Vector3();
     Vector3 heading = new Vector3();
@@ -19,7 +23,7 @@ public class ActionScript : MonoBehaviour
     GameObject[] tiles;
 
     Stack<Tile> stack = new Stack<Tile>();
-    Tile currentTile;
+    public Tile currentTile;
 
     float half = 0;
 
@@ -64,19 +68,27 @@ public class ActionScript : MonoBehaviour
     }
 
     //Check neighbors
-    public void ProcessAdjList(float distJump, Tile target)
+    public void ProcessAdjList(float distJump, Tile target, bool attack)
     {
         for (int i = 0; i < tiles.Length; i++)
         {
             Tile t = tiles[i].GetComponent<Tile>();
-            t.Neighbors(distJump, target);
+            if(attack == false)
+            {
+                t.Neighbors(distJump, target);
+            }
+            else
+            {
+                t.NeighborsAttack(distJump, target);
+            }
+            
         }
     }
 
     //Use the stack to now  the order of tiles and draw them according to their state
     public void FindGoTile()
     {
-        ProcessAdjList(distJump, null);
+        ProcessAdjList(distJump, null, false);
         GetCurrentTile();
 
         Queue<Tile> process = new Queue<Tile>();
@@ -111,7 +123,7 @@ public class ActionScript : MonoBehaviour
 
     public void FindAttackTile()
     {
-        ProcessAdjList(distJump, null);
+        ProcessAdjList(distJump, null, true);
         GetCurrentTile();
 
         Queue<Tile> process = new Queue<Tile>();
@@ -126,7 +138,7 @@ public class ActionScript : MonoBehaviour
             selectTiles.Add(t);
             t.attack = true;
 
-            if (t.dist < move)
+            if (t.dist < distAttack)
             {
                 for (int i = 0; i < t.adjList.Count; i++)
                 {
@@ -149,18 +161,10 @@ public class ActionScript : MonoBehaviour
 
         //Here we calculate how much stamina use
         StatsScript stats = gameObject.GetComponent<StatsScript>();
-        int useStamina = 0;
-        Tile t = tile;
-        for (int i = 0; i < move && t.parent != null; i++)
+        
+        if (stats.stamina >= tile.dist)
         {
-            t = tile.parent;
-            useStamina++;
-        }
-        Debug.Log(stats.stamina);
-
-        if (stats.stamina >= useStamina)
-        {
-            stats.UseStamina((float)useStamina);
+            stats.UseStamina((float)tile.dist);
             tile.target = true;
             moving = true;
             stack.Clear();
@@ -173,6 +177,33 @@ public class ActionScript : MonoBehaviour
             }
         }
         
+    }
+
+    public void AttackToTile(Tile tile)
+    {
+
+        StatsScript stats = gameObject.GetComponent<StatsScript>();
+
+        if (tile.npc != null && tile.npc != gameObject)
+        {
+            if (stats.stamina >= attackCost)
+            {
+                stats.UseStamina((float)attackCost);
+
+                tile.target = true;
+                attacking = true;
+                stack.Clear();
+
+                stack.Push(tile);
+
+            }
+        }
+        else
+        {
+            tile.failAttack = true;
+        }
+        
+
     }
 
     public void Move()
@@ -200,6 +231,7 @@ public class ActionScript : MonoBehaviour
                 if (stack.Count == 1)
                 {
                     t.npc = gameObject;
+                    actualTargetTile = t;
                 }
                 stack.Pop();
             }
@@ -217,13 +249,36 @@ public class ActionScript : MonoBehaviour
         }
     }
 
+    public void Attack()
+    {
+        if (stack.Count > 0)
+        {
+            Tile t = stack.Peek();
+            int playerDmg = gameObject.GetComponent<StatsScript>().attackDmg;
+            t.npc.GetComponent<StatsScript>().Damage(playerDmg);
+            lastMove = true;
+            stack.Pop();
+        }
+        else
+        {
+            RemoveSelectableTiles();
+            attacking = false;
+            if (gameObject.GetComponent<NPCActionScript>() != null)
+            {
+                this.GetComponent<StatsScript>().ResetStamina();
+                TurnManager.EndTurn();
+            }
+
+        }
+    }
+
     protected void RemoveSelectableTiles()
     {
         currentTile = GetTargetTile(gameObject);
 
         foreach (Tile tile in selectTiles)
         {
-            if(tile != currentTile)
+            if (tile != currentTile)
             {
                 tile.Restart(gameObject, true);
             }
@@ -297,7 +352,7 @@ public class ActionScript : MonoBehaviour
 
     protected void FindPath(Tile target)
     {
-        ProcessAdjList(distJump, target);
+        ProcessAdjList(distJump, target, false);
         GetCurrentTile();
 
         List<Tile> openList = new List<Tile>();
