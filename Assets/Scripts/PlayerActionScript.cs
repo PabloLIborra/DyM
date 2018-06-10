@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerMoveScript : MoveScript
+public class PlayerActionScript : ActionScript
 {
 
     public bool walkButton = false;
@@ -39,15 +39,15 @@ public class PlayerMoveScript : MoveScript
         }
 
         //ATTACK
-        if (attackButton == true && Time.timeScale > 0)
+        if (attackButton == true && Time.timeScale > 0 && turn)
         {
-           
+            FindAttackTile();
         }
     }
 
     public void clickedWalk()
     {
-        if(!moving && Time.timeScale > 0)
+        if(!moving && attackButton == false && Time.timeScale > 0)
         {
             if (walkButton == false)
             {
@@ -63,7 +63,7 @@ public class PlayerMoveScript : MoveScript
 
     public void clickedAttack()
     {
-        if (!moving && Time.timeScale > 0)
+        if (!moving && walkButton == false && Time.timeScale > 0)
         {
             if (attackButton == false)
             {
@@ -72,9 +72,19 @@ public class PlayerMoveScript : MoveScript
             else
             {
                 attackButton = false;
+                RemoveSelectableTiles();
             }
-            this.GetComponent<PlayerStatsScript>().UseStamina(1f);
-            this.GetComponent<PlayerStatsScript>().Damage(50f);
+        }
+    }
+
+    public void clickedTurn()
+    {
+        if (!moving && Time.timeScale > 0)
+        {
+            this.GetComponent<StatsScript>().ResetStamina();
+            TurnManager.EndTurn();
+            attackButton = false;
+            walkButton = false;
         }
     }
 
@@ -91,19 +101,9 @@ public class PlayerMoveScript : MoveScript
                 {
                     Tile t = hit.collider.GetComponent<Tile>();
 
-                    //Here we calculate how much stamina use
-                    StatsScript stats = gameObject.GetComponent<StatsScript>();
-                    int useStamina = 0;
-                    Tile tile = t;
-                    for (int i = 0; i < move && tile.parent != null; i++)
+                    
+                    if (t.go)
                     {
-                        tile = t.parent;
-                        useStamina++;
-                    }
-
-                    if (t.go && stats.stamina >= useStamina)
-                    {
-                        stats.UseStamina((float)useStamina);
                         MoveToTile(t);
                     }
                 }

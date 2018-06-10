@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour {
 
-	static Dictionary<string, List<MoveScript>> units = new Dictionary<string, List<MoveScript>>();
+	static Dictionary<string, List<ActionScript>> units = new Dictionary<string, List<ActionScript>>();
 	static Queue<string> turnKey = new Queue<string>();
-	static Queue<MoveScript> turnTeam = new Queue<MoveScript>();
+	static Queue<ActionScript> turnTeam = new Queue<ActionScript>();
 	
 	// Use this for initialization
 	void Start () {
@@ -23,9 +23,9 @@ public class TurnManager : MonoBehaviour {
 
 	static void InitTeamTurnQueue()
 	{
-		List<MoveScript> teamList = units[turnKey.Peek()];
+		List<ActionScript> teamList = units[turnKey.Peek()];
 
-		foreach(MoveScript unit in teamList)
+		foreach(ActionScript unit in teamList)
 		{
 			turnTeam.Enqueue(unit);
 		}
@@ -43,7 +43,7 @@ public class TurnManager : MonoBehaviour {
 
 	public static void EndTurn()
 	{
-		MoveScript unit = turnTeam.Dequeue();
+		ActionScript unit = turnTeam.Dequeue();
 		unit.EndTurn();
 
 		if(turnTeam.Count > 0)
@@ -58,13 +58,13 @@ public class TurnManager : MonoBehaviour {
 		}
 	}
 
-	public static void AddUnit(MoveScript unit)
+	public static void AddUnit(ActionScript unit)
 	{
-		List<MoveScript> list;
+		List<ActionScript> list;
 
 		if(!units.ContainsKey(unit.tag))
 		{
-			list = new List<MoveScript>();
+			list = new List<ActionScript>();
 			units[unit.tag] = list;
 
 			if(!turnKey.Contains(unit.tag))

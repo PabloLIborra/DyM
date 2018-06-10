@@ -9,6 +9,7 @@ public class Tile : MonoBehaviour
     public bool target = false;
     public bool go = false;
     public bool obstacle = false;
+    public bool attack = false;
 
     public GameObject npc = null;
 
@@ -34,9 +35,13 @@ public class Tile : MonoBehaviour
     //We draw boxes according the player position
 	void Update ()
     {
-        if(actual == true)  //Where we are
+        if(actual == true && attack == false)  //Where we are
         {
             this.GetComponent<Renderer>().material.color = Color.cyan;
+        }
+        else if (actual == true && attack == true)  //Where we are
+        {
+            this.GetComponent<Renderer>().material.color = Color.red;
         }
         else if (target == true)    //Where we are going
         {
@@ -46,9 +51,13 @@ public class Tile : MonoBehaviour
         {
             this.GetComponent<Renderer>().material.color = Color.magenta;
         }
-        else if (npc != null && actual == false)    //Where we can go
+        else if (npc != null && actual == false && attack == false)    //Where we can go
         {
             this.GetComponent<Renderer>().material.color = Color.red;
+        }
+        else if(attack == true)
+        {
+            this.GetComponent<Renderer>().material.color = Color.blue;
         }
         else    //Rest of boxes
         {
@@ -64,6 +73,8 @@ public class Tile : MonoBehaviour
         actual = false;
         target = false;
         go = false;
+
+        attack = false;
 
         if (npc == player && enter == true)
         {
@@ -81,12 +92,22 @@ public class Tile : MonoBehaviour
     //Check again the neighbors according to new tile where we are
     public void Neighbors(float distJump, Tile target)
     {
-        Restart(npc, false);             
+        Restart(npc, false);
 
         checkTile(Vector3.forward, distJump, target);
         checkTile(-Vector3.forward, distJump, target);
         checkTile(Vector3.right, distJump, target);
         checkTile(-Vector3.right, distJump, target);
+    }
+
+    public void NeighborsAttack(float distJump, Tile target)
+    {
+        Restart(npc, false);
+
+        checkTileAttack(Vector3.forward, distJump, target);
+        checkTileAttack(-Vector3.forward, distJump, target);
+        checkTileAttack(Vector3.right, distJump, target);
+        checkTileAttack(-Vector3.right, distJump, target);
     }
 
     //We use a raycast to check the diferents boxes around us

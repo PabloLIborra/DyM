@@ -10,6 +10,8 @@ TagManager:
   - Attack Button
   - Enemy
   - Row
+  - Turn Button
+  - Pause Button
   layers:
   - Default
   - TransparentFX

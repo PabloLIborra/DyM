@@ -30,7 +30,6 @@ public class StatsScript : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(stamina);
         //DAMAGE
         if (damage > 0 && (damage - (healthMax * multiplierHealth)) >= 0)
         {
@@ -60,7 +59,7 @@ public class StatsScript : MonoBehaviour
             health = (float)Math.Round(health, 0);
         }
         //STAMINA
-        if (useStamina > 0 && (useStamina - (staminaMax * multiplierStamina)) > 0)
+        if (useStamina > 0 && (useStamina - (staminaMax * multiplierStamina)) > 0 && gameObject.tag == "player")
         {
             if (stamina - (staminaMax * multiplierStamina) >= 0)
             {
@@ -98,11 +97,17 @@ public class StatsScript : MonoBehaviour
     {
         useStamina += stm;
     }
-    
+
     public void Revive()
     {
         health = healthMax;
         healthBar.size = health / healthMax;
+        stamina = staminaMax;
+        staminaBar.size = stamina / staminaMax;
+    }
+
+    public void ResetStamina()
+    {
         stamina = staminaMax;
         staminaBar.size = stamina / staminaMax;
     }

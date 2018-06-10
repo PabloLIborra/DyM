@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.UIElements;
 
-public class MoveScript : MonoBehaviour
+public class ActionScript : MonoBehaviour
 {
     public bool turn = false;
     public int move = 5;
@@ -108,18 +109,70 @@ public class MoveScript : MonoBehaviour
         }
     }
 
+    public void FindAttackTile()
+    {
+        ProcessAdjList(distJump, null);
+        GetCurrentTile();
+
+        Queue<Tile> process = new Queue<Tile>();
+
+        process.Enqueue(currentTile);
+        currentTile.visited = true;
+
+        while (process.Count > 0)
+        {
+            Tile t = process.Dequeue();
+
+            selectTiles.Add(t);
+            t.attack = true;
+
+            if (t.dist < move)
+            {
+                for (int i = 0; i < t.adjList.Count; i++)
+                {
+                    Tile tile = t.adjList[i];
+                    if (tile.visited == false)
+                    {
+                        tile.parent = t;
+                        tile.visited = true;
+                        tile.dist = 1 + t.dist;
+
+                        process.Enqueue(tile);
+                    }
+                }
+            }
+        }
+    }
+
     public void MoveToTile(Tile tile)
     {
-        tile.target = true;
-        moving = true;
-        stack.Clear();
 
-        Tile next = tile;
-        while(next != null)
+        //Here we calculate how much stamina use
+        StatsScript stats = gameObject.GetComponent<StatsScript>();
+        int useStamina = 0;
+        Tile t = tile;
+        for (int i = 0; i < move && t.parent != null; i++)
         {
-            stack.Push(next);
-            next = next.parent;
+            t = tile.parent;
+            useStamina++;
         }
+        Debug.Log(stats.stamina);
+
+        if (stats.stamina >= useStamina)
+        {
+            stats.UseStamina((float)useStamina);
+            tile.target = true;
+            moving = true;
+            stack.Clear();
+
+            Tile next = tile;
+            while (next != null)
+            {
+                stack.Push(next);
+                next = next.parent;
+            }
+        }
+        
     }
 
     public void Move()
@@ -155,8 +208,12 @@ public class MoveScript : MonoBehaviour
         {   
             RemoveSelectableTiles();
             moving = false;
-
-            TurnManager.EndTurn();
+            if(gameObject.GetComponent<NPCActionScript>() != null)
+            {
+                this.GetComponent<StatsScript>().ResetStamina();
+                TurnManager.EndTurn();
+            }
+            
         }
     }
 
