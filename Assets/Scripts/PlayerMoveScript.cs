@@ -61,6 +61,23 @@ public class PlayerMoveScript : MoveScript
         }     
     }
 
+    public void clickedAttack()
+    {
+        if (!moving && Time.timeScale > 0)
+        {
+            if (attackButton == false)
+            {
+                attackButton = true;
+            }
+            else
+            {
+                attackButton = false;
+            }
+            this.GetComponent<PlayerStatsScript>().UseStamina(1f);
+            this.GetComponent<PlayerStatsScript>().Damage(50f);
+        }
+    }
+
     void CheckMouse()
     {
         if(Input.GetMouseButtonUp(0))
@@ -91,23 +108,6 @@ public class PlayerMoveScript : MoveScript
                     }
                 }
             }
-        }
-    }
-
-    public void clickedAttack()
-    {
-        if(!moving && Time.timeScale > 0)
-        {
-            if (attackButton == false)
-            {
-                attackButton = true;
-            }
-            else
-            {
-                attackButton = false;
-            }
-            this.GetComponent<PlayerStatsScript>().UseStamina(1f);
-            this.GetComponent<PlayerStatsScript>().Damage(20f);
         }
     }
 

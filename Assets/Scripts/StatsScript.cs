@@ -9,10 +9,12 @@ public class StatsScript : MonoBehaviour
 
     public float health = 50;
     public float healthMax = 50;
+    float multiplierHealth = 0.02f;
     public Scrollbar healthBar;
 
     public float stamina = 5;
     public float staminaMax = 5;
+    float multiplierStamina = 0.02f;
     public Scrollbar staminaBar;
 
     float useStamina = 0;
@@ -28,12 +30,13 @@ public class StatsScript : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(stamina);
         //DAMAGE
-        if(damage > 0)
+        if (damage > 0 && (damage - (healthMax * multiplierHealth)) >= 0)
         {
-            if (health - (healthMax * 0.01f) >= 0)
+            if (health - (healthMax * multiplierHealth) >= 0)
             {
-                health -= (healthMax * 0.01f);
+                health -= (healthMax * multiplierHealth);
             }
             else
             {
@@ -41,14 +44,27 @@ public class StatsScript : MonoBehaviour
             }
 
             healthBar.size = health / healthMax;
-            damage -= (healthMax * 0.01f);
+            damage -= (healthMax * multiplierHealth);
+        }
+        else
+        {
+            if(health - damage >= 0)
+            {
+                health -= damage;
+            }
+            else
+            {
+                health = 0;
+            }
+            damage = 0;
+            health = (float)Math.Round(health, 0);
         }
         //STAMINA
-        if (useStamina > 0 && (useStamina - (staminaMax * 0.01f)) > 0)
+        if (useStamina > 0 && (useStamina - (staminaMax * multiplierStamina)) > 0)
         {
-            if (stamina - (staminaMax * 0.01f) >= 0)
+            if (stamina - (staminaMax * multiplierStamina) >= 0)
             {
-                stamina -= (staminaMax * 0.01f);
+                stamina -= (staminaMax * multiplierStamina);
             }
             else
             {
@@ -56,15 +72,21 @@ public class StatsScript : MonoBehaviour
             }
 
             staminaBar.size = stamina / staminaMax;
-            useStamina -= (staminaMax * 0.01f);
+            useStamina -= (staminaMax * multiplierStamina);
         }
         else
         {
+            if (stamina - useStamina >= 0)
+            {
+                stamina -= useStamina;
+            }
+            else
+            {
+                stamina = 0;
+            }
             useStamina = 0;
             stamina = (float)Math.Round(stamina, 0);
         }
-        /*if (health == 0)
-            Revive();*/
     }
 
     public void Damage(float dmg)

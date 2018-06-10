@@ -81,7 +81,7 @@ public class Tile : MonoBehaviour
     //Check again the neighbors according to new tile where we are
     public void Neighbors(float distJump, Tile target)
     {
-        Restart(npc, true);             //ToDo:: CAMBIAR, NO TIENE QUE SER TRUE, PERO EN FALSE NO VA LA IA
+        Restart(npc, false);             
 
         checkTile(Vector3.forward, distJump, target);
         checkTile(-Vector3.forward, distJump, target);
@@ -99,7 +99,7 @@ public class Tile : MonoBehaviour
         {
             Tile tile = coll[i].GetComponent<Tile>();
             //npc = null;
-            if(tile != null && tile.walk == true && tile.obstacle == false && tile.npc == null)
+            if(tile != null && tile.walk == true && tile.obstacle == false/* && tile.npc == null*/)
             {
                 RaycastHit ray;
                 if (Physics.Raycast(tile.transform.position, Vector3.up, out ray, 1) == false || (tile == target))
@@ -108,5 +108,26 @@ public class Tile : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void checkTileAttack(Vector3 dir, float distJump, Tile target)
+    {
+        Vector3 half = new Vector3(0.25f, (1 + distJump) / 2.0f, 0.25f);
+        Collider[] coll = Physics.OverlapBox(transform.position + dir, half);
+
+        for (int i = 0; i < coll.Length; i++)
+        {
+            Tile tile = coll[i].GetComponent<Tile>();
+            //npc = null;
+            if (tile != null && tile.walk == true && tile.obstacle == false && tile.npc == null)
+            {
+                RaycastHit ray;
+                if (Physics.Raycast(tile.transform.position, Vector3.up, out ray, 1) == false || (tile == target))
+                {
+                    adjList.Add(tile);
+                }
+            }
+        }
+        
     }
 }
