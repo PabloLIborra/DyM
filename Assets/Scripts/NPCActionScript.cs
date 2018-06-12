@@ -13,7 +13,14 @@ public class NPCActionScript : ActionScript {
 	
 	// Update is called once per frame
 	void Update () {
-		if (turn)
+
+        float stamina = gameObject.GetComponent<StatsScript>().stamina;
+        if(stamina == 0 && moving == false && attacking == false)
+        {
+            this.GetComponent<StatsScript>().ResetStamina();
+            TurnManager.EndTurn();
+        }
+        if (turn)
         {
             if (!moving)
             {
@@ -34,13 +41,13 @@ public class NPCActionScript : ActionScript {
         }
 	}
 
-	void CalculatePath()
+	public void CalculatePath()
     {
         Tile TargetTile = GetTargetTile(target);
         FindPath(TargetTile);
     }
 
-    void FindNearestTarget()
+    public void FindNearestTarget()
     {
         GameObject[] targets = GameObject.FindGameObjectsWithTag("player");
 

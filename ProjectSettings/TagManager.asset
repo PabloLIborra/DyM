@@ -12,6 +12,7 @@ TagManager:
   - Row
   - Turn Button
   - Pause Button
+  - Enemy Bar
   layers:
   - Default
   - TransparentFX

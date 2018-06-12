@@ -9,6 +9,9 @@ public class PlayerActionScript : ActionScript
     public bool walkButton = false;
     public bool attackButton = false;
 
+    GameObject healthBar = null;
+    GameObject staminaBar = null;
+
     // Use this for initialization
     void Start ()
     {
@@ -18,6 +21,7 @@ public class PlayerActionScript : ActionScript
 	// Update is called once per frame
 	void Update ()
     {
+        CheckMouse();
         //WALK
         if (walkButton == true && Time.timeScale > 0 && turn)
         {
@@ -61,7 +65,7 @@ public class PlayerActionScript : ActionScript
 
     public void clickedWalk()
     {
-        if(!moving && attackButton == false && Time.timeScale > 0 && turn)
+        if (!moving && attackButton == false && Time.timeScale > 0 && turn)
         {
             if (walkButton == false)
             {
@@ -93,7 +97,7 @@ public class PlayerActionScript : ActionScript
 
     public void clickedTurn()
     {
-        if (!moving && Time.timeScale > 0 && turn)
+        if (!moving && !attacking && Time.timeScale > 0 && turn)
         {
             this.GetComponent<StatsScript>().ResetStamina();
             TurnManager.EndTurn();
@@ -121,18 +125,27 @@ public class PlayerActionScript : ActionScript
                         {
                             t = hit.collider.GetComponent<ActionScript>().actualTargetTile;
                         }
+                        setActiveBar(hit.collider.gameObject, true);
                     }
                     else
                     {
                         t = hit.collider.GetComponent<Tile>();
+                        if(t.npc != null && t.npc.tag == "Enemy")
+                        {
+                            setActiveBar(t.npc, true);
+                        }
+                        else
+                        {
+                            setActiveBar(null, false);
+                        }
                     }
                     
-                    
-                    if (t != null && t.go)
+
+                    if (t != null && t.go && !moving && turn)
                     {
                         MoveToTile(t);
                     }
-                    else if(t != null && t.attack)
+                    else if(t != null && t.attack && !attacking && turn)
                     {
                         AttackToTile(t);
                     }
@@ -145,7 +158,42 @@ public class PlayerActionScript : ActionScript
                         t = hit.collider.GetComponent<ActionScript>().actualTargetTile;
                     }
                     t.failAttack = true;
+
+                    setActiveBar(null, false);
                 }
+                else
+                {
+                    setActiveBar(null, false);
+                }
+            }
+            else
+            {
+                setActiveBar(null, false);
+            }
+        }
+    }
+
+    public void setActiveBar(GameObject npc, bool active)
+    {
+        if(npc != null && active == true)
+        {
+            healthBar = npc.GetComponent<StatsScript>().healthBar.gameObject;
+            healthBar.SetActive(true);
+            staminaBar = npc.GetComponent<StatsScript>().staminaBar.gameObject;
+            staminaBar.SetActive(true);
+            npc.GetComponent<StatsScript>().updateVisibleBar();
+        }
+        else
+        {
+            if (healthBar != null)
+            {
+                healthBar.SetActive(false);
+                healthBar = null;
+            }
+            if (staminaBar != null)
+            {
+                staminaBar.SetActive(false);
+                staminaBar = null;
             }
         }
     }

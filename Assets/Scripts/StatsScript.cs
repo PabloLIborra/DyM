@@ -32,7 +32,6 @@ public class StatsScript : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(health);
         //DAMAGE
         if (damage > 0 && (damage - (healthMax * multiplierHealth)) >= 0)
         {
@@ -62,7 +61,7 @@ public class StatsScript : MonoBehaviour
             health = (float)Math.Round(health, 0);
         }
         //STAMINA
-        if (useStamina > 0 && (useStamina - (staminaMax * multiplierStamina)) > 0 && gameObject.tag == "player")
+        if (useStamina > 0 && (useStamina - (staminaMax * multiplierStamina)) > 0/* && gameObject.tag == "player"*/)
         {
             if (stamina - (staminaMax * multiplierStamina) >= 0)
             {
@@ -120,4 +119,12 @@ public class StatsScript : MonoBehaviour
         return damage;
     }
 
+    public void updateVisibleBar()
+    {
+        if(gameObject.tag == "Enemy")
+        {
+            healthBar.size = health / healthMax;
+            staminaBar.size = stamina / staminaMax;
+        }
+    }
 }

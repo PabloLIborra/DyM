@@ -7,6 +7,7 @@ public class ActionScript : MonoBehaviour
 {
     public bool turn = false;
     public int move = 5;
+    private int maxMoveAI = 5;
     public float distJump = 2;
     public int distAttack = 2;
     public float moveSpeed = 2;
@@ -43,6 +44,7 @@ public class ActionScript : MonoBehaviour
         currentTile = GetTargetTile(gameObject);
         currentTile.npc = gameObject;
 
+        maxMoveAI = move;
     }
 
     //Take actual tile and draw the box
@@ -158,13 +160,37 @@ public class ActionScript : MonoBehaviour
 
     public void MoveToTile(Tile tile)
     {
-
         //Here we calculate how much stamina use
         StatsScript stats = gameObject.GetComponent<StatsScript>();
-        
-        if (stats.stamina >= tile.dist)
+        int wasted = tile.dist;
+
+        //////////Case to Enemy
+        if(gameObject.tag == "Enemy")
         {
-            stats.UseStamina((float)tile.dist);
+            if(stats.stamina - move >= 0)
+            {
+                wasted = move;
+            }
+            else if(stats.stamina - move > -move)
+            {
+                move = (int)stats.stamina;
+                NPCActionScript npcAction = gameObject.GetComponent<NPCActionScript>();
+                npcAction.FindNearestTarget();
+                npcAction.CalculatePath();
+                wasted = (int)stats.stamina;
+                move = maxMoveAI;
+                return;
+            }
+            else
+            {
+                wasted = -1;
+            }
+        }
+        /////////////////
+
+        if (stats.stamina >= wasted && wasted != -1)
+        {
+            stats.UseStamina((float)wasted);
             tile.target = true;
             moving = true;
             stack.Clear();
@@ -238,14 +264,8 @@ public class ActionScript : MonoBehaviour
         }
         else
         {   
-            RemoveSelectableTiles();
-            moving = false;
-            if(gameObject.GetComponent<NPCActionScript>() != null)
-            {
-                this.GetComponent<StatsScript>().ResetStamina();
-                TurnManager.EndTurn();
-            }
-            
+            moving = false; 
+            RemoveSelectableTiles();           
         }
     }
 
@@ -263,12 +283,6 @@ public class ActionScript : MonoBehaviour
         {
             RemoveSelectableTiles();
             attacking = false;
-            if (gameObject.GetComponent<NPCActionScript>() != null)
-            {
-                this.GetComponent<StatsScript>().ResetStamina();
-                TurnManager.EndTurn();
-            }
-
         }
     }
 
