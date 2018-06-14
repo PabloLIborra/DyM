@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 3d51e93e6e7f54f47be1f2f272a92181
-=======
-guid: f71819bf39d00754db0992ca6aa6394b
->>>>>>> 8bfd0ec791ac9c6ddc61af5d48506a755c8d0664
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -12,17 +8,11 @@ ModelImporter:
     400000: default
     400002: //RootNode
     2100000: Plastic.002
-<<<<<<< HEAD
     2100002: Plastic.002_NONE
-=======
-    2100002: Plastic.002_DefaultMaterial_Base_Color.png
-    2100004: None
-    2100006: None_DefaultMaterial_Base_Color.png
-    2100008: Plastic.002_NONE
->>>>>>> 8bfd0ec791ac9c6ddc61af5d48506a755c8d0664
     2300000: default
     3300000: default
     4300000: default
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -98,7 +88,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
