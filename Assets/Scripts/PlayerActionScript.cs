@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Vuforia;
 
 public class PlayerActionScript : ActionScript
 {
@@ -13,15 +12,17 @@ public class PlayerActionScript : ActionScript
     GameObject healthBar = null;
     GameObject staminaBar = null;
 
-    // Use this for initialization
-    void Start ()
+
+    private void Start()
     {
         Init();
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    }
+
+
+    // Update is called once per frame
+    void Update ()
     {
+        
         CheckMouse();
         //WALK
         if (walkButton == true && Time.timeScale > 0 && turn)
@@ -216,6 +217,11 @@ public class PlayerActionScript : ActionScript
                 rotate.GetComponent<Button>().interactable = true;
             }
         }
+        GameObject warningTrack = GameObject.FindGameObjectWithTag("Warning");
+        if (warningTrack != null)
+        {
+            warningTrack.GetComponent<Image>().enabled = false;
+        }
     }
 
     public static void ButtonTrackingLost()
@@ -250,6 +256,14 @@ public class PlayerActionScript : ActionScript
             if (rotate != null)
             {
                 rotate.GetComponent<Button>().interactable = false;
+            }
+        }
+        GameObject[] warningTrack = GameObject.FindGameObjectsWithTag("Warning");
+        foreach (var warning in warningTrack)
+        {
+            if (warning != null)
+            {
+                warning.GetComponent<Image>().enabled = true;
             }
         }
     }

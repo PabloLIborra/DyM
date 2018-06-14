@@ -32,6 +32,8 @@ public class ActionScript : MonoBehaviour
 
     protected bool lastMove = false;          //Use on Player Move Script to uncheck Button
 
+    public bool firstEnter = false;
+
     //Check the tiles and fill the array
     protected void Init()
     {
@@ -211,8 +213,6 @@ public class ActionScript : MonoBehaviour
 
         if (tile.npc != null && tile.npc != gameObject)
         {
-            //Debug.Log("Entra");
-            //Debug.Log("Stamina: " + stats.stamina + " attackCost: " + attackCost);
             if (stats.stamina >= attackCost)
             {
                 stats.UseStamina(attackCost);

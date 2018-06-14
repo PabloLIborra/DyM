@@ -4,33 +4,48 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour {
 
-	static Dictionary<string, List<ActionScript>> units = new Dictionary<string, List<ActionScript>>();
-	static Queue<string> turnKey = new Queue<string>();
-	static Queue<ActionScript> turnTeam = new Queue<ActionScript>();
-	
-	// Use this for initialization
-	void Start () {
-		
+	public static Dictionary<string, List<ActionScript>> units = new Dictionary<string, List<ActionScript>>();
+    public static Queue<string> turnKey = new Queue<string>();
+    public static Queue<ActionScript> turnTeam = new Queue<ActionScript>();
+
+    // Use this for initialization
+    void Start () {
+        
 	}
-	
-	// Update is called once per frame
-	void Update () {
+    void Init()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update () {
 		if(turnTeam.Count == 0)
 		{
-			InitTeamTurnQueue();
-		}
+			InitTeamTurnQueue();/*
+            ActionScript turn = turnTeam.Dequeue();
+            while (turn.gameObject.tag != "player")
+            {
+                EndTurn();
+                InitTeamTurnQueue();
+            }*/
+        }
 	}
 
 	static void InitTeamTurnQueue()
 	{
-		List<ActionScript> teamList = units[turnKey.Peek()];
+        if(turnKey.Count > 0)
+        {
+            List<ActionScript> teamList = units[turnKey.Peek()];
 
-		foreach(ActionScript unit in teamList)
-		{
-			turnTeam.Enqueue(unit);
-		}
-
-		StartTurn();
+            if (teamList != null)
+            {
+                foreach (ActionScript unit in teamList)
+                {
+                    turnTeam.Enqueue(unit);
+                }
+                StartTurn();
+            }
+        }
 	}
 
 	public static void StartTurn()
@@ -61,15 +76,14 @@ public class TurnManager : MonoBehaviour {
 	public static void AddUnit(ActionScript unit)
 	{
 		List<ActionScript> list;
-
 		if(!units.ContainsKey(unit.tag))
 		{
 			list = new List<ActionScript>();
 			units[unit.tag] = list;
 
 			if(!turnKey.Contains(unit.tag))
-			{
-				turnKey.Enqueue(unit.tag);
+            {
+                turnKey.Enqueue(unit.tag);
 			}
 		}
 		else

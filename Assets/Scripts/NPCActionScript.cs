@@ -6,14 +6,14 @@ public class NPCActionScript : ActionScript {
 
     GameObject target;
 
-	// Use this for initialization
-	void Start () {
-		Init();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    private void Start()
+    {
+        Init();
+    }
 
+    // Update is called once per frame
+    void Update () {
+        
         int stamina = gameObject.GetComponent<StatsScript>().stamina;
         if(stamina <= 0.0 && moving == false && attacking == false && turn)
         {
@@ -51,28 +51,6 @@ public class NPCActionScript : ActionScript {
             }
 
             StatsScript stats = gameObject.GetComponent<StatsScript>();
-            //Debug.Log("Stamina: " + stats.stamina);
-            //Debug.Log("Moving: " + moving);
-            //Debug.Log("Attacking: " + attacking);
-            /*
-            FindNearestTarget();
-            FindAttackTile();
-            Tile TargetTile = GetTargetTile(target);
-            if(TargetTile.attack)
-            {
-                AttackToTile(TargetTile);
-            }
-            else if (!moving)
-            {
-				CalculatePath();
-                FindGoTile();
-                actualTargetTile.target = true;
-            }
-            else
-            {
-                Move();
-            }
-            */
 
             if(lastMove == true && moving == false)
             {
