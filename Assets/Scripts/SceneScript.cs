@@ -38,12 +38,12 @@ class CharacterData
 //======================================
 public class SceneScript : MonoBehaviour
 {
+	public static int current_scene;
+	public static int counter;
 
     float time = 1f;
 
 	public int scene;
-	public static int current_scene;
-	public static int counter;
 	public static bool loadedGame;
 
     public Material matPause;
