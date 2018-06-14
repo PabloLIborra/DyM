@@ -9,6 +9,7 @@ Confidential and Proprietary - Protected under copyright and other laws.
 using UnityEngine;
 using Vuforia;
 
+
 /// <summary>
 /// A custom handler that implements the ITrackableEventHandler interface.
 /// 
@@ -56,12 +57,14 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
         {
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
             OnTrackingFound();
+            PlayerActionScript.ButtonTrackingFound();
         }
         else if (previousStatus == TrackableBehaviour.Status.TRACKED &&
                  newStatus == TrackableBehaviour.Status.NO_POSE)
         {
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
             OnTrackingLost();
+            PlayerActionScript.ButtonTrackingLost();
         }
         else
         {
@@ -69,6 +72,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             // Vuforia is starting, but tracking has not been lost or found yet
             // Call OnTrackingLost() to hide the augmentations
             OnTrackingLost();
+            PlayerActionScript.ButtonTrackingLost();
         }
     }
 

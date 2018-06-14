@@ -17,6 +17,7 @@ TagManager:
   - Map
   - Target
   - Game
+  - Rotate Button
   layers:
   - Default
   - TransparentFX
