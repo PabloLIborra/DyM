@@ -181,8 +181,8 @@ public class PlayerActionScript : ActionScript
             Debug.Log(npc);
             healthBar = npc.GetComponent<StatsScript>().healthBar.gameObject;
             healthBar.SetActive(true);
-            staminaBar = npc.GetComponent<StatsScript>().staminaBar.gameObject;
-            staminaBar.SetActive(true);
+            //staminaBar = npc.GetComponent<StatsScript>().staminaBar.gameObject;
+            //staminaBar.SetActive(true);
             npc.GetComponent<StatsScript>().updateVisibleBar();
         }
         else

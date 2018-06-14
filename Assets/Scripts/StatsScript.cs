@@ -27,8 +27,8 @@ public class StatsScript : MonoBehaviour
         health = healthMax;
         healthBar.size = health / healthMax;
         stamina = staminaMax;
-        staminaText = staminaBar.gameObject.transform.GetChild(0).GetComponent<Text>();
-        staminaText.text = stamina.ToString();
+        //staminaText = staminaBar.gameObject.transform.GetChild(0).GetComponent<Text>();
+        //staminaText.text = stamina.ToString();
     }
 
     private void Update()
@@ -68,7 +68,7 @@ public class StatsScript : MonoBehaviour
         {
             stamina--;
             useStamina--;
-            staminaText.text = stamina.ToString();
+            //staminaText.text = stamina.ToString();
         }
         else
         {
@@ -81,7 +81,7 @@ public class StatsScript : MonoBehaviour
                 stamina = 0;
             }
             useStamina = 0;
-            staminaText.text = stamina.ToString();
+            //staminaText.text = stamina.ToString();
         }
     }
 
@@ -100,13 +100,13 @@ public class StatsScript : MonoBehaviour
         health = healthMax;
         healthBar.size = health / healthMax;
         stamina = staminaMax;
-        staminaText.text = stamina.ToString();
+        //staminaText.text = stamina.ToString();
     }
 
     public void ResetStamina()
     {
         stamina = staminaMax;
-        staminaText.text = stamina.ToString();
+        //staminaText.text = stamina.ToString();
     }
 
     public float getDamage()
@@ -121,7 +121,7 @@ public class StatsScript : MonoBehaviour
             Debug.Log("si");
             Debug.Log(gameObject);
             healthBar.size = health / healthMax;
-            staminaText.text = stamina.ToString();
+            //staminaText.text = stamina.ToString();
         }
     }
 }

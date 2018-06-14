@@ -46,13 +46,17 @@ public class TurnManager : MonoBehaviour {
 		ActionScript unit = turnTeam.Dequeue();
 		unit.EndTurn();
 
+		Debug.Log("Entra en turnmanager");
 		if(turnTeam.Count > 0)
 		{
+			Debug.Log("Count: " + turnTeam.Count);
 			StartTurn();
 		}
 		else
 		{
+			Debug.Log("Aqui no entra nunca");
 			string team = turnKey.Dequeue();
+			Debug.Log("Team: "+team);
 			turnKey.Enqueue(team);
 			InitTeamTurnQueue();
 		}
