@@ -17,6 +17,8 @@ TagManager:
   - Map
   - Target
   - Game
+  - Rotate Button
+  - Warning
   layers:
   - Default
   - TransparentFX

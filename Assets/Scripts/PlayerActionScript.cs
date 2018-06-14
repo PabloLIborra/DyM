@@ -12,15 +12,17 @@ public class PlayerActionScript : ActionScript
     GameObject healthBar = null;
     GameObject staminaBar = null;
 
-    // Use this for initialization
-    void Start ()
+
+    private void Start()
     {
         Init();
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    }
+
+
+    // Update is called once per frame
+    void Update ()
     {
+        
         CheckMouse();
         //WALK
         if (walkButton == true && Time.timeScale > 0 && turn)
@@ -186,6 +188,82 @@ public class PlayerActionScript : ActionScript
             {
                 staminaBar.SetActive(false);
                 staminaBar = null;
+            }
+        }
+    }
+
+    public static void ButtonTrackingFound()
+    {
+        GameObject turnButton = GameObject.FindGameObjectWithTag("Turn Button");
+        if (turnButton != null)
+        {
+            turnButton.GetComponent<Button>().interactable = true;
+        }
+        GameObject attackButton = GameObject.FindGameObjectWithTag("Attack Button");
+        if (attackButton != null)
+        {
+            attackButton.GetComponent<Button>().interactable = true;
+        }
+        GameObject walkButton = GameObject.FindGameObjectWithTag("Walk Button");
+        if (walkButton != null)
+        {
+            walkButton.GetComponent<Button>().interactable = true;
+        }
+        GameObject[] rotateButton = GameObject.FindGameObjectsWithTag("Rotate Button");
+        foreach (var rotate in rotateButton)
+        {
+            if (rotate != null)
+            {
+                rotate.GetComponent<Button>().interactable = true;
+            }
+        }
+        GameObject warningTrack = GameObject.FindGameObjectWithTag("Warning");
+        if (warningTrack != null)
+        {
+            warningTrack.GetComponent<Image>().enabled = false;
+        }
+    }
+
+    public static void ButtonTrackingLost()
+    {
+        GameObject[] turnButton = GameObject.FindGameObjectsWithTag("Turn Button");
+        foreach (var turn in turnButton)
+        {
+            if (turn != null)
+            {
+                turn.GetComponent<Button>().interactable = false;
+            }
+        }
+        GameObject[] attackButton = GameObject.FindGameObjectsWithTag("Attack Button");
+        foreach (var attack in attackButton)
+        {
+            if (attack != null)
+            {
+                attack.GetComponent<Button>().interactable = false;
+            }
+        }
+        GameObject[] walkButton = GameObject.FindGameObjectsWithTag("Walk Button");
+        foreach (var walk in walkButton)
+        {
+            if (walk != null)
+            {
+                walk.GetComponent<Button>().interactable = false;
+            }
+        }
+        GameObject[] rotateButton = GameObject.FindGameObjectsWithTag("Rotate Button");
+        foreach (var rotate in rotateButton)
+        {
+            if (rotate != null)
+            {
+                rotate.GetComponent<Button>().interactable = false;
+            }
+        }
+        GameObject[] warningTrack = GameObject.FindGameObjectsWithTag("Warning");
+        foreach (var warning in warningTrack)
+        {
+            if (warning != null)
+            {
+                warning.GetComponent<Image>().enabled = true;
             }
         }
     }

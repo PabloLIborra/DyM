@@ -48,6 +48,9 @@ public class SceneScript : MonoBehaviour
             GameObject.Find("CanvasPause").GetComponent<Canvas>().enabled = false;
         }
         canvasPause = false;
+        TurnManager.units.Clear();
+        TurnManager.turnKey.Clear();
+        TurnManager.turnTeam.Clear();
     }
 
     public void ExitGame()
