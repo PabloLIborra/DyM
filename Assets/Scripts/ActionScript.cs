@@ -207,11 +207,12 @@ public class ActionScript : MonoBehaviour
 
     public void AttackToTile(Tile tile)
     {
-
         StatsScript stats = gameObject.GetComponent<StatsScript>();
 
         if (tile.npc != null && tile.npc != gameObject)
         {
+            //Debug.Log("Entra");
+            //Debug.Log("Stamina: " + stats.stamina + " attackCost: " + attackCost);
             if (stats.stamina >= attackCost)
             {
                 stats.UseStamina((float)attackCost);
@@ -387,7 +388,6 @@ public class ActionScript : MonoBehaviour
                 MoveToTile(actualTargetTile);
                 return;
             }
-
             foreach(Tile tile in t.adjList)
             {
                 if(closedList.Contains(tile))
