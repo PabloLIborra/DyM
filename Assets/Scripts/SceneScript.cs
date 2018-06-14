@@ -195,8 +195,10 @@ public class SceneScript : MonoBehaviour
 				players[i].GetComponent<PlayerActionScript>().turn      = playersData[i].turn;
 				Vector3 position = new Vector3 (playersData [i].position_x, playersData [i].position_y, playersData [i].position_z);
 				players [i].transform.position = position;
+                players[i].GetComponent<ActionScript>().Init();
 
-			}
+
+            }
 
 			for(int i = 0; i < enemiesData.Length; i++)
 			{
@@ -204,8 +206,9 @@ public class SceneScript : MonoBehaviour
 				enemies[i].GetComponent<NPCStatsScript>().stamina = enemiesData [i].stamina;
 				enemies[i].GetComponent<NPCActionScript>().turn = enemiesData [i].turn;
 				Vector3 position = new Vector3 (enemiesData [i].position_x, enemiesData [i].position_y, enemiesData [i].position_z);
-				enemies [i].transform.position = position;
-			}
+				enemies[i].transform.position = position;
+                enemies[i].GetComponent<ActionScript>().Init();
+            }
 		}
 	}
 

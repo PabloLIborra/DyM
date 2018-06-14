@@ -35,7 +35,7 @@ public class ActionScript : MonoBehaviour
     public bool firstEnter = false;
 
     //Check the tiles and fill the array
-    protected void Init()
+    public void Init()
     {
         tiles = GameObject.FindGameObjectsWithTag("Tile");
 
