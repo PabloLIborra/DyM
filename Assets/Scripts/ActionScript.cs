@@ -190,7 +190,7 @@ public class ActionScript : MonoBehaviour
 
         if (stats.stamina >= wasted && wasted != -1)
         {
-            stats.UseStamina((float)wasted);
+            stats.UseStamina(wasted);
             tile.target = true;
             moving = true;
             stack.Clear();
@@ -214,7 +214,7 @@ public class ActionScript : MonoBehaviour
         {
             if (stats.stamina >= attackCost)
             {
-                stats.UseStamina((float)attackCost);
+                stats.UseStamina(attackCost);
 
                 tile.target = true;
                 attacking = true;

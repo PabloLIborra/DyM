@@ -1,52 +1,16 @@
 fileFormatVersion: 2
-guid: 0cd645a41ba94234784523acee279063
+guid: 1c10ac2cdd0789b4a80b2c5e8b948eaf
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Cube
-    100004: Field
-    100006: Diablo
-    100008: Diablo_safe
-    100010: Diablo_safe2
-    100012: Diablo_safe3
-    100014: Cylinder_000
-    100016: Cylinder_001
-    400000: //RootNode
-    400002: Cube
-    400004: Field
-    400006: Diablo
-    400008: Diablo_safe
-    400010: Diablo_safe2
-    400012: Diablo_safe3
-    400014: Cylinder_000
-    400016: Cylinder_001
-    2100000: unnamed
-    2100002: Plastic
-    2300000: Cube
-    2300002: Diablo
-    2300004: Diablo_safe
-    2300006: Diablo_safe2
-    2300008: Diablo_safe3
-    2300010: Cylinder_000
-    2300012: Cylinder_001
-    3300000: Cube
-    3300002: Diablo
-    3300004: Diablo_safe
-    3300006: Diablo_safe2
-    3300008: Diablo_safe3
-    3300010: Cylinder_000
-    3300012: Cylinder_001
-    4300000: Cube
-    4300002: Diablo_safe2
-    4300004: Diablo_safe
-    4300006: Diablo
-    4300008: Diablo_safe3
-    4300010: Cylinder_000
-    4300012: Cylinder_001
-    7400000: Default Take
-    9500000: //RootNode
-    2186277476908879412: ImportLogs
+    100000: default
+    100002: //RootNode
+    400000: default
+    400002: //RootNode
+    2100000: Plastic
+    2300000: default
+    3300000: default
+    4300000: default
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -122,7 +86,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

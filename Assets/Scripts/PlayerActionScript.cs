@@ -92,6 +92,7 @@ public class PlayerActionScript : ActionScript
                 attackButton = false;
                 RemoveSelectableTiles();
             }
+            gameObject.GetComponent<StatsScript>().Damage(10f);
         }
     }
 
@@ -177,6 +178,7 @@ public class PlayerActionScript : ActionScript
     {
         if(npc != null && active == true)
         {
+            Debug.Log(npc);
             healthBar = npc.GetComponent<StatsScript>().healthBar.gameObject;
             healthBar.SetActive(true);
             staminaBar = npc.GetComponent<StatsScript>().staminaBar.gameObject;

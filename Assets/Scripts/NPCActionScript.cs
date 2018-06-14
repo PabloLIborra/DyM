@@ -14,7 +14,7 @@ public class NPCActionScript : ActionScript {
 	// Update is called once per frame
 	void Update () {
 
-        float stamina = gameObject.GetComponent<StatsScript>().stamina;
+        int stamina = gameObject.GetComponent<StatsScript>().stamina;
         if(stamina == 0 && moving == false && attacking == false)
         {
             this.GetComponent<StatsScript>().ResetStamina();

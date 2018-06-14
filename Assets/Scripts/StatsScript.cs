@@ -12,12 +12,12 @@ public class StatsScript : MonoBehaviour
     float multiplierHealth = 0.02f;
     public Scrollbar healthBar;
 
-    public float stamina = 5;
-    public float staminaMax = 5;
-    float multiplierStamina = 0.02f;
-    public Scrollbar staminaBar;
+    public int stamina = 5;
+    public int staminaMax = 5;
+    public Image staminaBar;
+    Text staminaText;
 
-    float useStamina = 0;
+    int useStamina = 0;
     float damage = 0;
 
     public int attackDmg = 1;
@@ -27,7 +27,8 @@ public class StatsScript : MonoBehaviour
         health = healthMax;
         healthBar.size = health / healthMax;
         stamina = staminaMax;
-        staminaBar.size = stamina / staminaMax;
+        staminaText = staminaBar.gameObject.transform.GetChild(0).GetComponent<Text>();
+        staminaText.text = stamina.ToString();
     }
 
     private void Update()
@@ -61,19 +62,13 @@ public class StatsScript : MonoBehaviour
             health = (float)Math.Round(health, 0);
         }
         //STAMINA
-        if (useStamina > 0 && (useStamina - (staminaMax * multiplierStamina)) > 0/* && gameObject.tag == "player"*/)
+        //Debug.Log(gameObject);
+        
+        if (useStamina > 0 && stamina - useStamina >= 0)
         {
-            if (stamina - (staminaMax * multiplierStamina) >= 0)
-            {
-                stamina -= (staminaMax * multiplierStamina);
-            }
-            else
-            {
-                stamina = 0;
-            }
-
-            staminaBar.size = stamina / staminaMax;
-            useStamina -= (staminaMax * multiplierStamina);
+            stamina--;
+            useStamina--;
+            staminaText.text = stamina.ToString();
         }
         else
         {
@@ -86,7 +81,7 @@ public class StatsScript : MonoBehaviour
                 stamina = 0;
             }
             useStamina = 0;
-            stamina = (float)Math.Round(stamina, 0);
+            staminaText.text = stamina.ToString();
         }
     }
 
@@ -95,7 +90,7 @@ public class StatsScript : MonoBehaviour
         damage += dmg;
     }
 
-    public void UseStamina(float stm)
+    public void UseStamina(int stm)
     {
         useStamina += stm;
     }
@@ -105,13 +100,13 @@ public class StatsScript : MonoBehaviour
         health = healthMax;
         healthBar.size = health / healthMax;
         stamina = staminaMax;
-        staminaBar.size = stamina / staminaMax;
+        staminaText.text = stamina.ToString();
     }
 
     public void ResetStamina()
     {
         stamina = staminaMax;
-        staminaBar.size = stamina / staminaMax;
+        staminaText.text = stamina.ToString();
     }
 
     public float getDamage()
@@ -123,8 +118,10 @@ public class StatsScript : MonoBehaviour
     {
         if(gameObject.tag == "Enemy")
         {
+            Debug.Log("si");
+            Debug.Log(gameObject);
             healthBar.size = health / healthMax;
-            staminaBar.size = stamina / staminaMax;
+            staminaText.text = stamina.ToString();
         }
     }
 }
