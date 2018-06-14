@@ -135,7 +135,8 @@ public class PlayerActionScript : ActionScript
                         {
                             setActiveBar(t.npc, true);
                         }
-                        else
+                        else if(!t.go && !t.attack &&
+                            GameObject.FindGameObjectWithTag("Canvas Pause").GetComponent<Canvas>().enabled == false)
                         {
                             setActiveBar(null, false);
                         }
@@ -159,17 +160,7 @@ public class PlayerActionScript : ActionScript
                         t = hit.collider.GetComponent<ActionScript>().actualTargetTile;
                     }
                     t.failAttack = true;
-
-                    setActiveBar(null, false);
                 }
-                else
-                {
-                    setActiveBar(null, false);
-                }
-            }
-            else
-            {
-                setActiveBar(null, false);
             }
         }
     }
@@ -178,11 +169,10 @@ public class PlayerActionScript : ActionScript
     {
         if(npc != null && active == true)
         {
-            Debug.Log(npc);
             healthBar = npc.GetComponent<StatsScript>().healthBar.gameObject;
             healthBar.SetActive(true);
-            //staminaBar = npc.GetComponent<StatsScript>().staminaBar.gameObject;
-            //staminaBar.SetActive(true);
+            staminaBar = npc.GetComponent<StatsScript>().staminaBar.gameObject;
+            staminaBar.SetActive(true);
             npc.GetComponent<StatsScript>().updateVisibleBar();
         }
         else
