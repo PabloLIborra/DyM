@@ -28,7 +28,7 @@ class GameData
 class CharacterData
 {
 	public float health;
-	public float stamina;
+	public int stamina;
 	public bool turn;
 	public float position_x;
 	public float position_y;
@@ -129,7 +129,7 @@ public class SceneScript : MonoBehaviour
         }
     }
 
-<<<<<<< HEAD
+	//Click to load the game
 	public void clickLoadGameData()
 	{
 		//Reading files
@@ -153,6 +153,17 @@ public class SceneScript : MonoBehaviour
 		loadedGame = true;
 	}
 
+	//Check if file exists
+	public bool checkFileExists()
+	{
+		if (File.Exists (Application.dataPath + "/Save/Game.dat")) {
+			return true;
+		}
+
+		return false;
+	}
+
+	//Load raw data from file
 	public void LoadGameData()
 	{
 		//Checker if we are in menu or not
@@ -163,6 +174,12 @@ public class SceneScript : MonoBehaviour
 		//Check existence
 		if(File.Exists(Application.dataPath + "/Save/Game.dat"))
 		{
+			//Clean all tiles before reassigning positions
+			GameObject[] tiles = GameObject.FindGameObjectsWithTag("Tile");
+			foreach (GameObject tile in tiles) {
+				tile.GetComponent<Tile>().Restart (null, true);
+			}
+
 			//Reading files
 			BinaryFormatter bf = new BinaryFormatter (); 									  //Transcription to binary
 			FileStream f = File.Open(Application.dataPath + "/Save/Game.dat", FileMode.Open); //File reading
@@ -207,7 +224,8 @@ public class SceneScript : MonoBehaviour
 		}*/
 	}
 
-	public void SaveGameData()
+	//Click to save the data
+	public void clickSaveGameData()
 	{
 		//Open data readers
 		BinaryFormatter bf = new BinaryFormatter (); 					     //Transcription to binary
@@ -262,18 +280,13 @@ public class SceneScript : MonoBehaviour
 		//Close pause menu
 		PauseGame();
 	}
-
-=======
->>>>>>> origin/master
+		
     public void LeftRotate()
     {
         GameObject map = GameObject.FindGameObjectWithTag("Game");
         map.transform.Rotate(0,90,0);
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
     public void RightRotate()
     {
         GameObject map = GameObject.FindGameObjectWithTag("Game");
