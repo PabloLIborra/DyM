@@ -13,6 +13,10 @@ TagManager:
   - Turn Button
   - Pause Button
   - Enemy Bar
+  - Canvas Pause
+  - Map
+  - Target
+  - Game
   layers:
   - Default
   - TransparentFX

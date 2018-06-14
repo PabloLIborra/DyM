@@ -37,6 +37,19 @@ public class SceneScript : MonoBehaviour
         canvasPause = false;
     }
 
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
+        time = 1f;
+        Time.timeScale = time;
+
+        if (GameObject.Find("CanvasPause") != null)
+        {
+            GameObject.Find("CanvasPause").GetComponent<Canvas>().enabled = false;
+        }
+        canvasPause = false;
+    }
+
     public void ExitGame()
     {
         Application.Quit();
@@ -61,5 +74,16 @@ public class SceneScript : MonoBehaviour
             GameObject.Find("CanvasPause").GetComponent<Canvas>().enabled = false;
             canvasPause = false;
         }
+    }
+
+    public void LeftRotate()
+    {
+        GameObject map = GameObject.FindGameObjectWithTag("Game");
+        map.transform.Rotate(0,90,0);
+    }
+    public void RightRotate()
+    {
+        GameObject map = GameObject.FindGameObjectWithTag("Game");
+        map.transform.Rotate(0, -90, 0);
     }
 }
