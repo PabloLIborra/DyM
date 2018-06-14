@@ -38,7 +38,6 @@ class CharacterData
 //======================================
 public class SceneScript : MonoBehaviour
 {
-	public static int current_scene;
 	public static int counter;
 
     float time = 1f;
@@ -70,9 +69,6 @@ public class SceneScript : MonoBehaviour
 
     public void LoadScene()
 	{
-		//Current scene
-		current_scene = scene;
-
 		//State that the game is newly generated
 		loadedGame = false;
 
@@ -166,11 +162,6 @@ public class SceneScript : MonoBehaviour
 	//Load raw data from file
 	public void LoadGameData()
 	{
-		//Checker if we are in menu or not
-		/*bool in_menu = false;
-		if (current_scene == 0)
-			in_menu = true;*/
-
 		//Check existence
 		if(File.Exists(Application.dataPath + "/Save/Game.dat"))
 		{
@@ -216,12 +207,6 @@ public class SceneScript : MonoBehaviour
 				enemies [i].transform.position = position;
 			}
 		}
-			
-		/*//Tries to load, if failed or successful, closes the menu
-		if (!in_menu) 
-		{
-			PauseGame();
-		}*/
 	}
 
 	//Click to save the data
@@ -236,8 +221,8 @@ public class SceneScript : MonoBehaviour
 
 		//Fill data
 		//data.scene = scene;
-		UnityEngine.Debug.Log("Current SCENE: " + current_scene);
-		data.scene = current_scene;
+		UnityEngine.Debug.Log("Current SCENE: " + SceneManager.GetActiveScene().buildIndex);
+		data.scene = SceneManager.GetActiveScene().buildIndex;
 
 		GameObject[] players = GameObject.FindGameObjectsWithTag("player");
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
