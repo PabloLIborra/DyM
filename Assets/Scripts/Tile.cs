@@ -83,6 +83,10 @@ public class Tile : MonoBehaviour
         {
             npc = null;
         }
+        else if(player == null && enter == true)
+        {
+            npc = null;
+        }
 
 
         visited = false;
