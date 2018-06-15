@@ -56,7 +56,5 @@ public class Wall : MonoBehaviour {
 				gameObject.GetComponent<MeshRenderer> ().enabled = false;
 			}
 		}
-
-
 	}
 }

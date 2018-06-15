@@ -19,8 +19,6 @@ TagManager:
   - Game
   - Rotate Button
   - Warning
-  - Wall
-  - ARCamera
   layers:
   - Default
   - TransparentFX

@@ -81,6 +81,78 @@ public class SceneScript : MonoBehaviour
             GameObject.Find("CanvasPause").GetComponent<Canvas>().enabled = false;
         }
         canvasPause = false;
+        TurnManager.units.Clear();
+        TurnManager.turnKey.Clear();
+        TurnManager.turnTeam.Clear();
+
+        ActionScript.players.Clear();
+        ActionScript.enemies.Clear();
+    }
+
+    public void StartMatch()
+    {
+        //State that the game is newly generated
+        loadedGame = false;
+
+        SceneManager.LoadScene("Lvl1");
+        time = 1f;
+        Time.timeScale = time;
+
+        if (GameObject.Find("CanvasPause") != null)
+        {
+            GameObject.Find("CanvasPause").GetComponent<Canvas>().enabled = false;
+        }
+        canvasPause = false;
+        TurnManager.units.Clear();
+        TurnManager.turnKey.Clear();
+        TurnManager.turnTeam.Clear();
+
+        ActionScript.players.Clear();
+        ActionScript.enemies.Clear();
+    }
+
+    public void NextScene()
+    {
+        //State that the game is newly generated
+        loadedGame = false;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        time = 1f;
+        Time.timeScale = time;
+
+        if (GameObject.Find("CanvasPause") != null)
+        {
+            GameObject.Find("CanvasPause").GetComponent<Canvas>().enabled = false;
+        }
+        canvasPause = false;
+        TurnManager.units.Clear();
+        TurnManager.turnKey.Clear();
+        TurnManager.turnTeam.Clear();
+
+        ActionScript.players.Clear();
+        ActionScript.enemies.Clear();
+    }
+
+    public void RechargeScene()
+    {
+        //State that the game is newly generated
+        loadedGame = false;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        time = 1f;
+        Time.timeScale = time;
+
+        if (GameObject.Find("CanvasPause") != null)
+        {
+            GameObject.Find("CanvasPause").GetComponent<Canvas>().enabled = false;
+        }
+        canvasPause = false;
+        TurnManager.units.Clear();
+        TurnManager.turnKey.Clear();
+        TurnManager.turnTeam.Clear();
+
+        ActionScript.players.Clear();
+        ActionScript.enemies.Clear();
     }
 
     public void MainMenu()
@@ -97,6 +169,9 @@ public class SceneScript : MonoBehaviour
         TurnManager.units.Clear();
         TurnManager.turnKey.Clear();
         TurnManager.turnTeam.Clear();
+
+        ActionScript.players.Clear();
+        ActionScript.enemies.Clear();
     }
 
     public void ExitGame()
@@ -195,8 +270,10 @@ public class SceneScript : MonoBehaviour
 				players[i].GetComponent<PlayerActionScript>().turn      = playersData[i].turn;
 				Vector3 position = new Vector3 (playersData [i].position_x, playersData [i].position_y, playersData [i].position_z);
 				players [i].transform.position = position;
+                players[i].GetComponent<ActionScript>().Init();
 
-			}
+
+            }
 
 			for(int i = 0; i < enemiesData.Length; i++)
 			{
@@ -204,8 +281,9 @@ public class SceneScript : MonoBehaviour
 				enemies[i].GetComponent<NPCStatsScript>().stamina = enemiesData [i].stamina;
 				enemies[i].GetComponent<NPCActionScript>().turn = enemiesData [i].turn;
 				Vector3 position = new Vector3 (enemiesData [i].position_x, enemiesData [i].position_y, enemiesData [i].position_z);
-				enemies [i].transform.position = position;
-			}
+				enemies[i].transform.position = position;
+                enemies[i].GetComponent<ActionScript>().Init();
+            }
 		}
 	}
 
@@ -221,7 +299,6 @@ public class SceneScript : MonoBehaviour
 
 		//Fill data
 		//data.scene = scene;
-		UnityEngine.Debug.Log("Current SCENE: " + SceneManager.GetActiveScene().buildIndex);
 		data.scene = SceneManager.GetActiveScene().buildIndex;
 
 		GameObject[] players = GameObject.FindGameObjectsWithTag("player");
