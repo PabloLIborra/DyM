@@ -50,7 +50,26 @@ public class SceneScript : MonoBehaviour
 
     private void Update()
     {
-        if(canvasPause == false)
+
+        if (checkFileExists())
+        {
+            GameObject loadMatch = GameObject.Find("Cargar Partida Menu Boton");
+            if(loadMatch != null)
+            {
+                loadMatch.GetComponent<Button>().interactable = true;
+            }
+        }
+        else
+        {
+            GameObject loadMatch = GameObject.Find("Cargar Partida Menu Boton");
+            if (loadMatch != null)
+            {
+                loadMatch.GetComponent<Button>().interactable = false;
+            }
+        }
+
+
+        if (canvasPause == false)
         {
             if(GameObject.Find("CanvasPause") != null)
             {
@@ -186,8 +205,42 @@ public class SceneScript : MonoBehaviour
             time = 0f;
             Time.timeScale = time;
 
-            GameObject.Find("CanvasPause").GetComponent<Canvas>().enabled = true;
+            GameObject canvas = GameObject.Find("CanvasPause");
+            canvas.GetComponent<Canvas>().enabled = true;
             canvasPause = true;
+
+            GameObject[] players = GameObject.FindGameObjectsWithTag("player");
+
+            bool block = true;
+            foreach (var player in players)
+            {
+                if(player.GetComponent<ActionScript>().turn == true)
+                {
+                    if(player.GetComponent<ActionScript>().moving == false)
+                    {
+                        if (player.GetComponent<ActionScript>().attacking == false)
+                        {
+                            block = false;
+                        }
+                    }
+                }
+            }
+
+            GameObject saveButton = canvas.transform.FindChild("Save").gameObject;
+            if (block == false)
+            {
+                if(saveButton != null)
+                {
+                    saveButton.GetComponent<Button>().interactable = true;
+                }
+            }
+            else
+            {
+                if (saveButton != null)
+                {
+                    saveButton.GetComponent<Button>().interactable = false;
+                }
+            }
 
         }
         else if(time == 0f)
@@ -203,8 +256,8 @@ public class SceneScript : MonoBehaviour
 	//Click to load the game
 	public void clickLoadGameData()
 	{
-		//Reading files
-		BinaryFormatter bf = new BinaryFormatter (); 									  //Transcription to binary
+        //Reading files
+        BinaryFormatter bf = new BinaryFormatter (); 									  //Transcription to binary
 		FileStream f = File.Open(Application.dataPath + "/Save/Game.dat", FileMode.Open); //File reading
 
 		//Read data
