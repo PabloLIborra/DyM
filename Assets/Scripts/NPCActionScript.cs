@@ -39,12 +39,10 @@ public class NPCActionScript : ActionScript {
                         if(distAttack)
                         {
                             DistAttack();
-                            distAttack = false;
                         }
                         else if (meleAttack)
                         {
                             MeleAttack();
-                            meleAttack = false;
                         }
                     }
                 }

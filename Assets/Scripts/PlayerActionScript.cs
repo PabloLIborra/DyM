@@ -59,6 +59,7 @@ public class PlayerActionScript : ActionScript
                 else
                 {
                     MeleAttack();
+                    GameObject.FindGameObjectWithTag("Dist Attack Button").GetComponent<Button>().interactable = false;
                 }
 
                 if (lastMove == true && attacking == false)
@@ -83,6 +84,8 @@ public class PlayerActionScript : ActionScript
                 else
                 {
                     DistAttack();
+                    GameObject.FindGameObjectWithTag("Attack Button").GetComponent<Button>().interactable = false;
+                    GameObject.FindGameObjectWithTag("Walk Button").GetComponent<Button>().interactable = false;
                 }
 
                 if (lastMove == true && attacking == false)
@@ -157,6 +160,7 @@ public class PlayerActionScript : ActionScript
             distAttackButton = false;
             GameObject.FindGameObjectWithTag("Attack Button").GetComponent<Button>().interactable = true;
             GameObject.FindGameObjectWithTag("Dist Attack Button").GetComponent<Button>().interactable = true;
+            GameObject.FindGameObjectWithTag("Walk Button").GetComponent<Button>().interactable = true;
         }
     }
 
