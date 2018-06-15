@@ -9,6 +9,8 @@ ModelImporter:
     400002: //RootNode
     2100000: Piedra_3
     2100002: Tierra_2
+    2100004: Material.005
+    2100006: Material.009
     2300000: default
     3300000: default
     4300000: default
