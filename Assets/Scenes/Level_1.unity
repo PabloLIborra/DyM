@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657755, g: 0.4964127, b: 0.57481825, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657725, g: 0.49641222, b: 0.5748182, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1469,11 +1469,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4875235109691506, guid: ae8a91c6f4144fe4cb8dfa9bf9d8b6fb, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.2
+      value: 2.32
       objectReference: {fileID: 0}
     - target: {fileID: 4875235109691506, guid: ae8a91c6f4144fe4cb8dfa9bf9d8b6fb, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -9
+      value: -9.21
       objectReference: {fileID: 0}
     - target: {fileID: 4875235109691506, guid: ae8a91c6f4144fe4cb8dfa9bf9d8b6fb, type: 2}
       propertyPath: m_LocalRotation.x
@@ -4162,7 +4162,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 600105681}
+      objectReference: {fileID: 1416512810}
     - target: {fileID: 114509712632804496, guid: 042ecd3d9e8f12a40ae707cfc99ed636,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4302,7 +4302,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1416512810}
+      objectReference: {fileID: 600105681}
     - target: {fileID: 114809785336327000, guid: 042ecd3d9e8f12a40ae707cfc99ed636,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName

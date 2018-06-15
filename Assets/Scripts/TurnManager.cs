@@ -31,6 +31,9 @@ public class TurnManager : MonoBehaviour {
         {
             List<ActionScript> teamList = units[turnKey.Peek()];
 
+			Debug.Log("Team: " + turnKey.Peek());
+			Debug.Log("Number: " + teamList.Count);
+
             if (teamList != null)
             {
                 foreach (ActionScript unit in teamList)
@@ -52,6 +55,7 @@ public class TurnManager : MonoBehaviour {
 
 	public static void EndTurn()
 	{
+		Debug.Log("Finalizo turno");
 		ActionScript unit = turnTeam.Dequeue();
 		unit.EndTurn();
 
