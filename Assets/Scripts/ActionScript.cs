@@ -96,9 +96,11 @@ public class ActionScript : MonoBehaviour
             Canvas endCanvas = GameObject.Find("EndMatchCanvas").GetComponent<Canvas>();
             endCanvas.enabled = true;
             endCanvas.transform.GetChild(0).gameObject.SetActive(true);
-            if(SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCount-1)
+            Debug.Log(SceneManager.GetActiveScene().buildIndex);
+            Debug.Log(SceneManager.sceneCountInBuildSettings);
+            if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1)
             {
-                GameObject nextScene = GameObject.FindGameObjectWithTag("NextLevelButton");
+                GameObject nextScene = GameObject.Find("NextLevelButton");
                 nextScene.GetComponent<Button>().interactable = false;
             }
             return true;
