@@ -20,7 +20,8 @@ public class StatsScript : MonoBehaviour
     int useStamina = 0;
     float damage = 0;
 
-    public int attackDmg = 1;
+    public int meleAttackDmg = 1;
+    public int distAttackDmg = 1;
 
     private void Start()
     {

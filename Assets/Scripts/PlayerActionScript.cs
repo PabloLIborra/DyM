@@ -8,6 +8,7 @@ public class PlayerActionScript : ActionScript
 
     public bool walkButton = false;
     public bool attackButton = false;
+    public bool distAttackButton = false;
 
     GameObject healthBar = null;
     GameObject staminaBar = null;
@@ -37,6 +38,7 @@ public class PlayerActionScript : ActionScript
                 else
                 {
                     Move();
+                    GameObject.FindGameObjectWithTag("Dist Attack Button").GetComponent<Button>().interactable = false;
                 }
 
                 if (lastMove == true && moving == false)
@@ -46,8 +48,8 @@ public class PlayerActionScript : ActionScript
                 }
             }
 
-            //ATTACK
-            if (attackButton == true && Time.timeScale > 0 && turn)
+            //MELE ATTACK
+            if (attackButton == true && Time.timeScale > 0 && turn && meleAttackDo == false)
             {
                 if (!attacking)
                 {
@@ -56,12 +58,36 @@ public class PlayerActionScript : ActionScript
                 }
                 else
                 {
-                    Attack();
+                    MeleAttack();
                 }
 
                 if (lastMove == true && attacking == false)
                 {
                     attackButton = false;
+                    lastMove = false;
+                }
+            }
+            else if(meleAttackDo == true)
+            {
+                GameObject.FindGameObjectWithTag("Attack Button").GetComponent<Button>().interactable = false;
+            }
+
+            //DISTANCE ATTACK
+            if (distAttackButton == true && Time.timeScale > 0 && turn)
+            {
+                if (!attacking)
+                {
+                    FindDistAttackTile();
+                    CheckMouse();
+                }
+                else
+                {
+                    DistAttack();
+                }
+
+                if (lastMove == true && attacking == false)
+                {
+                    distAttackButton = false;
                     lastMove = false;
                 }
             }
@@ -74,7 +100,7 @@ public class PlayerActionScript : ActionScript
 
     public void clickedWalk()
     {
-        if (!moving && attackButton == false && Time.timeScale > 0 && turn)
+        if (!moving && attackButton == false && distAttackButton == false && Time.timeScale > 0 && turn)
         {
             if (walkButton == false)
             {
@@ -85,12 +111,12 @@ public class PlayerActionScript : ActionScript
                 walkButton = false;
                 RemoveSelectableTiles();
             }
-        }     
+        }
     }
 
     public void clickedAttack()
     {
-        if (!attacking && walkButton == false && Time.timeScale > 0 && turn)
+        if (!attacking && walkButton == false && distAttackButton == false && Time.timeScale > 0 && turn)
         {
             if (attackButton == false)
             {
@@ -104,6 +130,22 @@ public class PlayerActionScript : ActionScript
         }
     }
 
+    public void clickedDistAttack()
+    {
+        if (!attacking && walkButton == false && Time.timeScale > 0 && turn)
+        {
+            if (distAttackButton == false)
+            {
+                distAttackButton = true;
+            }
+            else
+            {
+                distAttackButton = false;
+                RemoveSelectableTiles();
+            }
+        }
+    }
+
     public void clickedTurn()
     {
         if (!moving && !attacking && Time.timeScale > 0 && turn)
@@ -112,6 +154,9 @@ public class PlayerActionScript : ActionScript
             TurnManager.EndTurn();
             attackButton = false;
             walkButton = false;
+            distAttackButton = false;
+            GameObject.FindGameObjectWithTag("Attack Button").GetComponent<Button>().interactable = true;
+            GameObject.FindGameObjectWithTag("Dist Attack Button").GetComponent<Button>().interactable = true;
         }
     }
 
@@ -157,7 +202,14 @@ public class PlayerActionScript : ActionScript
                     }
                     else if(t != null && t.attack && !attacking && turn)
                     {
-                        AttackToTile(t);
+                        if(attackButton == true && distAttackButton == false)
+                        {
+                            MeleAttackToTile(t);
+                        }
+                        else if(attackButton == false && distAttackButton == true)
+                        {
+                            DistAttackToTile(t);
+                        }
                     }
                 }
                 else if(hit.collider.tag == "player")

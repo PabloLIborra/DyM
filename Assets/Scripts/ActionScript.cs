@@ -9,13 +9,15 @@ public class ActionScript : MonoBehaviour
     public int move = 5;
     private int maxMoveAI = 5;
     public float distJump = 2;
-    public int distAttack = 2;
+    public int distMeleAttack = 2;
+    public int distDistanceAttack = 2;
     public float moveSpeed = 2;
     public bool moving = false;
     public bool attacking = false;
     public int raycast = 1;
 
-    public int attackCost = 3;
+    public int meleAttackCost = 3;
+    public int distAttackCost = 3;
 
     Vector3 speed = new Vector3();
     Vector3 heading = new Vector3();
@@ -36,6 +38,8 @@ public class ActionScript : MonoBehaviour
 
     public static List<GameObject> players = new List<GameObject>();
     public static List<GameObject> enemies = new List<GameObject>();
+
+    protected bool meleAttackDo = false;
 
     //Check the tiles and fill the array
     public void Init()
@@ -151,7 +155,11 @@ public class ActionScript : MonoBehaviour
 
             selectTiles.Add(t);
             t.go = true;
-            
+
+            int stamina = gameObject.GetComponent<StatsScript>().stamina;
+
+            move = stamina;
+
             if (t.dist < move)
             {
                 for (int i = 0; i < t.adjList.Count; i++)
@@ -187,8 +195,59 @@ public class ActionScript : MonoBehaviour
             selectTiles.Add(t);
             t.attack = true;
 
-            if (t.dist < distAttack)
+            if (t.dist < distMeleAttack)
             {
+                for (int i = 0; i < t.adjList.Count; i++)
+                {
+                    Tile tile = t.adjList[i];
+                    if (tile.visited == false)
+                    {
+                        tile.parent = t;
+                        tile.visited = true;
+                        tile.dist = 1 + t.dist;
+
+                        process.Enqueue(tile);
+                    }
+                }
+            }
+        }
+    }
+
+    public void FindDistAttackTile()
+    {
+        ProcessAdjList(distJump, null, true);
+        GetCurrentTile();
+
+        Queue<Tile> process = new Queue<Tile>();
+
+        process.Enqueue(currentTile);
+        currentTile.visited = true;
+
+        while (process.Count > 0)
+        {
+            Tile t = process.Dequeue();
+
+            selectTiles.Add(t);
+            t.attack = true;
+
+            if (t.dist < distDistanceAttack && t.dist > distMeleAttack)
+            {
+                for (int i = 0; i < t.adjList.Count; i++)
+                {
+                    Tile tile = t.adjList[i];
+                    if (tile.visited == false)
+                    {
+                        tile.parent = t;
+                        tile.visited = true;
+                        tile.dist = 1 + t.dist;
+
+                        process.Enqueue(tile);
+                    }
+                }
+            }
+            else if(t.dist <= distMeleAttack)
+            {
+                t.attack = false;
                 for (int i = 0; i < t.adjList.Count; i++)
                 {
                     Tile tile = t.adjList[i];
@@ -252,15 +311,15 @@ public class ActionScript : MonoBehaviour
         
     }
 
-    public void AttackToTile(Tile tile)
+    public void MeleAttackToTile(Tile tile)
     {
         StatsScript stats = gameObject.GetComponent<StatsScript>();
 
         if (tile.npc != null && tile.npc != gameObject)
         {
-            if (stats.stamina >= attackCost)
+            if (stats.stamina >= meleAttackCost)
             {
-                stats.UseStamina(attackCost);
+                stats.UseStamina(meleAttackCost);
 
                 tile.target = true;
                 attacking = true;
@@ -279,6 +338,36 @@ public class ActionScript : MonoBehaviour
             tile.failAttack = true;
         }
         
+
+    }
+
+    public void DistAttackToTile(Tile tile)
+    {
+        StatsScript stats = gameObject.GetComponent<StatsScript>();
+
+        if (tile.npc != null && tile.npc != gameObject)
+        {
+            if (stats.stamina >= distAttackCost)
+            {
+                stats.UseStamina(distAttackCost);
+
+                tile.target = true;
+                attacking = true;
+                stack.Clear();
+
+                stack.Push(tile);
+
+            }
+            else
+            {
+                return;
+            }
+        }
+        else
+        {
+            tile.failAttack = true;
+        }
+
 
     }
 
@@ -315,16 +404,35 @@ public class ActionScript : MonoBehaviour
         else
         {   
             moving = false; 
-            RemoveSelectableTiles();           
+            RemoveSelectableTiles();
+            move = maxMoveAI;
         }
     }
 
-    public void Attack()
+    public void MeleAttack()
     {
         if (stack.Count > 0)
         {
             Tile t = stack.Peek();
-            int playerDmg = gameObject.GetComponent<StatsScript>().attackDmg;
+            int playerDmg = gameObject.GetComponent<StatsScript>().meleAttackDmg;
+            t.npc.GetComponent<StatsScript>().Damage(playerDmg);
+            lastMove = true;
+            stack.Pop();
+        }
+        else
+        {
+            RemoveSelectableTiles();
+            attacking = false;
+            meleAttackDo = true;
+        }
+    }
+    
+    public void DistAttack()
+    {
+        if (stack.Count > 0)
+        {
+            Tile t = stack.Peek();
+            int playerDmg = gameObject.GetComponent<StatsScript>().distAttackDmg;
             t.npc.GetComponent<StatsScript>().Damage(playerDmg);
             lastMove = true;
             stack.Pop();
