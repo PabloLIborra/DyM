@@ -48,7 +48,7 @@ public class ActionScript : MonoBehaviour
         tiles = GameObject.FindGameObjectsWithTag("Tile");
 
         half = this.GetComponent<Collider>().bounds.extents.y;
-        Debug.Log(gameObject);
+
         TurnManager.AddUnit(this);
         
         currentTile = GetTargetTile(gameObject);
@@ -98,8 +98,6 @@ public class ActionScript : MonoBehaviour
             Canvas endCanvas = GameObject.Find("EndMatchCanvas").GetComponent<Canvas>();
             endCanvas.enabled = true;
             endCanvas.transform.GetChild(0).gameObject.SetActive(true);
-            Debug.Log(SceneManager.GetActiveScene().buildIndex);
-            Debug.Log(SceneManager.sceneCountInBuildSettings);
             if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1)
             {
                 GameObject nextScene = GameObject.Find("NextLevelButton");

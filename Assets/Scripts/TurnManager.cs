@@ -21,13 +21,7 @@ public class TurnManager : MonoBehaviour {
     void Update () {
 		if(turnTeam.Count == 0)
 		{
-			InitTeamTurnQueue();/*
-            ActionScript turn = turnTeam.Dequeue();
-            while (turn.gameObject.tag != "player")
-            {
-                EndTurn();
-                InitTeamTurnQueue();
-            }*/
+			InitTeamTurnQueue();
         }
 	}
 
@@ -92,7 +86,8 @@ public class TurnManager : MonoBehaviour {
 		else
 		{
 			list = units[unit.tag];
-		}
+            Debug.Log("che");
+        }
 
 		list.Add(unit);
 	}
