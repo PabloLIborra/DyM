@@ -76,6 +76,9 @@ public class ActionScript : MonoBehaviour
             Canvas endCanvas = GameObject.Find("EndMatchCanvas").GetComponent<Canvas>();
             endCanvas.enabled = true;
             endCanvas.transform.GetChild(1).gameObject.SetActive(true);
+            GameObject musMan = GameObject.Find("MusicManager").GetComponent<GameObject>();
+            musMan.transform.GetChild(0).GetComponent<AudioSource>().Stop();
+            musMan.transform.GetChild(2).GetComponent<AudioSource>().Play();
             moving = false;
             attacking = false;
             return true;
@@ -100,6 +103,9 @@ public class ActionScript : MonoBehaviour
             endCanvas.transform.GetChild(0).gameObject.SetActive(true);
             if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1)
             {
+                 GameObject musMan = GameObject.Find("MusicManager").GetComponent<GameObject>();
+                musMan.transform.GetChild(0).GetComponent<AudioSource>().Stop();
+                musMan.transform.GetChild(1).GetComponent<AudioSource>().Play();
                 GameObject nextScene = GameObject.Find("NextLevelButton");
                 nextScene.GetComponent<Button>().interactable = false;
             }
