@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Diagnostics;
+using System.Security.Cryptography;
 
 public class StatsScript : MonoBehaviour
 {
@@ -38,11 +40,16 @@ public class StatsScript : MonoBehaviour
         {
             if (gameObject.transform.rotation.eulerAngles.x <= 300 && gameObject.transform.rotation.eulerAngles.x > 0)
             {
+				
                 if(gameObject.GetComponent<ActionScript>() != null)
                 {
                     gameObject.GetComponent<ActionScript>().currentTile.Restart(gameObject, true);
                 }
                 gameObject.SetActive(false);
+				if (gameObject.tag == "Enemy") {
+					List<ActionScript> unit = TurnManager.units[gameObject.tag];
+					unit.Remove(gameObject.GetComponent<ActionScript>());
+				}
             }
             else
             {
@@ -52,9 +59,10 @@ public class StatsScript : MonoBehaviour
             }
             
         }
+
         //DAMAGE
         if (damage > 0 && (damage - (healthMax * multiplierHealth)) >= 0)
-        {
+		{
             if (health - (healthMax * multiplierHealth) >= 0)
             {
                 health -= (healthMax * multiplierHealth);
@@ -62,24 +70,24 @@ public class StatsScript : MonoBehaviour
             else
             {
                 health = 0;
-                List<ActionScript> unit = TurnManager.units["player"];
+				List<ActionScript> unit = TurnManager.units[gameObject.tag];
                 unit.Remove(gameObject.GetComponent<ActionScript>());
                 gameObject.SetActive(false);
             }
-
             healthBar.size = health / healthMax;
             damage -= (healthMax * multiplierHealth);
         }
         else
         {
-            if(health - damage >= 0)
+
+			if(health - damage >= 0)
             {
                 health -= damage;
             }
             else
             {
-                health = 0;
-                List<ActionScript> unit = TurnManager.units["player"];
+				health = 0;
+				List<ActionScript> unit = TurnManager.units[gameObject.tag];
                 unit.Remove(gameObject.GetComponent<ActionScript>());
                 gameObject.SetActive(false);
 
@@ -87,6 +95,7 @@ public class StatsScript : MonoBehaviour
             damage = 0;
             health = (float)Math.Round(health, 0);
         }
+
         //STAMINA        
         if (useStamina > 0 && stamina - useStamina >= 0)
         {
