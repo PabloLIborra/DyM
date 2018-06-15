@@ -33,6 +33,21 @@ public class StatsScript : MonoBehaviour
 
     private void Update()
     {
+        if(health == 0 && gameObject.activeSelf == true)
+        {
+            if (gameObject.transform.rotation.eulerAngles.x <= 300 && gameObject.transform.rotation.eulerAngles.x > 0)
+            {
+                gameObject.GetComponent<ActionScript>().currentTile.Restart(gameObject, true);
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                gameObject.transform.eulerAngles = new Vector3(gameObject.transform.rotation.eulerAngles.x - 1,
+                                                                gameObject.transform.rotation.eulerAngles.y,
+                                                                gameObject.transform.rotation.eulerAngles.z);
+            }
+            
+        }
         //DAMAGE
         if (damage > 0 && (damage - (healthMax * multiplierHealth)) >= 0)
         {
@@ -43,6 +58,7 @@ public class StatsScript : MonoBehaviour
             else
             {
                 health = 0;
+                gameObject.SetActive(false);
             }
 
             healthBar.size = health / healthMax;
@@ -99,6 +115,7 @@ public class StatsScript : MonoBehaviour
         healthBar.size = health / healthMax;
         stamina = staminaMax;
         staminaText.text = stamina.ToString();
+        gameObject.SetActive(true);
     }
 
     public void ResetStamina()

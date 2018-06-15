@@ -9,55 +9,63 @@ public class NPCActionScript : ActionScript {
     private void Start()
     {
         Init();
+        enemies.Add(gameObject);
     }
 
     // Update is called once per frame
-    void Update () {
-        
-        int stamina = gameObject.GetComponent<StatsScript>().stamina;
-        if(stamina <= 0.0 && moving == false && attacking == false && turn)
+    void Update ()
+    {
+        if (!checkHealth() && gameObject.activeSelf == true)
         {
-            this.GetComponent<StatsScript>().ResetStamina();
-            TurnManager.EndTurn();
+            int stamina = gameObject.GetComponent<StatsScript>().stamina;
+            if (stamina <= 0.0 && moving == false && attacking == false && turn)
+            {
+                this.GetComponent<StatsScript>().ResetStamina();
+                TurnManager.EndTurn();
+            }
+            if (turn)
+            {
+                if (moving || attacking)
+                {
+                    if (moving)
+                    {
+                        Move();
+                    }
+                    else if (attacking)
+                    {
+                        Attack();
+                    }
+                }
+                else
+                {
+                    FindNearestTarget();
+                    FindAttackTile();
+                    Tile TargetTile = GetTargetTile(target);
+                    if (TargetTile.attack && stamina >= attackCost)
+                    {
+                        AttackToTile(TargetTile);
+                    }
+                    else if (!moving)
+                    {
+                        CalculatePath();
+                        FindGoTile();
+                        actualTargetTile.target = true;
+                    }
+                }
+
+                StatsScript stats = gameObject.GetComponent<StatsScript>();
+
+                if (lastMove == true && moving == false)
+                {
+                    lastMove = false;
+                }
+            }
         }
-        if (turn)
+        else if (gameObject.activeSelf == false)
         {
-            if(moving || attacking)
-            {
-                if(moving)
-                {
-                    Move();
-                }
-                else if(attacking)
-                {
-                    Attack();
-                }
-            }
-            else
-            {
-                FindNearestTarget();
-                FindAttackTile();
-                Tile TargetTile = GetTargetTile(target);
-                if(TargetTile.attack && stamina >= attackCost)
-                {
-                    AttackToTile(TargetTile);
-                }
-                else if (!moving)
-                {
-                    CalculatePath();
-                    FindGoTile();
-                    actualTargetTile.target = true;
-                }
-            }
-
-            StatsScript stats = gameObject.GetComponent<StatsScript>();
-
-            if(lastMove == true && moving == false)
-            {
-                lastMove = false;
-            }
+            currentTile.Restart(gameObject, true);
         }
-	}
+    }
 
 	public void CalculatePath()
     {

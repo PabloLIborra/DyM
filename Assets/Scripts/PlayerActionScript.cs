@@ -16,52 +16,59 @@ public class PlayerActionScript : ActionScript
     private void Start()
     {
         Init();
+        players.Add(gameObject);
     }
 
 
     // Update is called once per frame
     void Update ()
     {
-        
-        CheckMouse();
-        //WALK
-        if (walkButton == true && Time.timeScale > 0 && turn)
+        if (!checkHealth() && gameObject.activeSelf == true)
         {
-            if (!moving)
+            CheckMouse();
+            //WALK
+            if (walkButton == true && Time.timeScale > 0 && turn)
             {
-                FindGoTile();
-                CheckMouse();
-            }
-            else
-            {
-                Move();
+                if (!moving)
+                {
+                    FindGoTile();
+                    CheckMouse();
+                }
+                else
+                {
+                    Move();
+                }
+
+                if (lastMove == true && moving == false)
+                {
+                    walkButton = false;
+                    lastMove = false;
+                }
             }
 
-            if(lastMove == true && moving == false)
+            //ATTACK
+            if (attackButton == true && Time.timeScale > 0 && turn)
             {
-                walkButton = false;
-                lastMove = false;
+                if (!attacking)
+                {
+                    FindAttackTile();
+                    CheckMouse();
+                }
+                else
+                {
+                    Attack();
+                }
+
+                if (lastMove == true && attacking == false)
+                {
+                    attackButton = false;
+                    lastMove = false;
+                }
             }
         }
-
-        //ATTACK
-        if (attackButton == true && Time.timeScale > 0 && turn)
+        else if(gameObject.activeSelf == false)
         {
-            if (!attacking)
-            {
-                FindAttackTile();
-                CheckMouse();
-            }
-            else
-            {
-                Attack();
-            }
-
-            if(lastMove == true && attacking == false)
-            {
-                attackButton = false;
-                lastMove = false;
-            }
+            currentTile.Restart(gameObject, true);
         }
     }
 
@@ -94,7 +101,6 @@ public class PlayerActionScript : ActionScript
                 attackButton = false;
                 RemoveSelectableTiles();
             }
-            gameObject.GetComponent<StatsScript>().Damage(10f);
         }
     }
 

@@ -34,6 +34,9 @@ public class ActionScript : MonoBehaviour
 
     public bool firstEnter = false;
 
+    public static List<GameObject> players = new List<GameObject>();
+    public static List<GameObject> enemies = new List<GameObject>();
+
     //Check the tiles and fill the array
     public void Init()
     {
@@ -47,6 +50,48 @@ public class ActionScript : MonoBehaviour
         currentTile.npc = gameObject;
 
         maxMoveAI = move;
+    }
+
+    protected bool checkHealth()
+    {
+        int countKills = 0;
+        foreach (var player in players)
+        {
+            if(player.GetComponent<StatsScript>().health <= 0)
+            {
+                if (player.activeSelf == false)
+                {
+                    countKills++;
+                }
+            }
+        }
+        if (countKills == players.Count)
+        {
+            Canvas endCanvas = GameObject.Find("EndMatchCanvas").GetComponent<Canvas>();
+            endCanvas.enabled = true;
+            endCanvas.transform.GetChild(1).gameObject.SetActive(true);
+            return true;
+        }
+
+        countKills = 0;
+        foreach (var enemy in enemies)
+        {
+            if (enemy.GetComponent<StatsScript>().health <= 0)
+            {
+                if (enemy.activeSelf == false)
+                {
+                    countKills++;
+                }
+            }
+        }
+        if (countKills == enemies.Count)
+        {
+            Canvas endCanvas = GameObject.Find("EndMatchCanvas").GetComponent<Canvas>();
+            endCanvas.enabled = true;
+            endCanvas.transform.GetChild(0).gameObject.SetActive(true);
+            return true;
+        }
+        return false;
     }
 
     //Take actual tile and draw the box

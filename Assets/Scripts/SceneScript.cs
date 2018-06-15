@@ -81,6 +81,78 @@ public class SceneScript : MonoBehaviour
             GameObject.Find("CanvasPause").GetComponent<Canvas>().enabled = false;
         }
         canvasPause = false;
+        TurnManager.units.Clear();
+        TurnManager.turnKey.Clear();
+        TurnManager.turnTeam.Clear();
+
+        ActionScript.players.Clear();
+        ActionScript.enemies.Clear();
+    }
+
+    public void StartMatch()
+    {
+        //State that the game is newly generated
+        loadedGame = false;
+
+        SceneManager.LoadScene("Lvl1");
+        time = 1f;
+        Time.timeScale = time;
+
+        if (GameObject.Find("CanvasPause") != null)
+        {
+            GameObject.Find("CanvasPause").GetComponent<Canvas>().enabled = false;
+        }
+        canvasPause = false;
+        TurnManager.units.Clear();
+        TurnManager.turnKey.Clear();
+        TurnManager.turnTeam.Clear();
+
+        ActionScript.players.Clear();
+        ActionScript.enemies.Clear();
+    }
+
+    public void NextScene()
+    {
+        //State that the game is newly generated
+        loadedGame = false;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        time = 1f;
+        Time.timeScale = time;
+
+        if (GameObject.Find("CanvasPause") != null)
+        {
+            GameObject.Find("CanvasPause").GetComponent<Canvas>().enabled = false;
+        }
+        canvasPause = false;
+        TurnManager.units.Clear();
+        TurnManager.turnKey.Clear();
+        TurnManager.turnTeam.Clear();
+
+        ActionScript.players.Clear();
+        ActionScript.enemies.Clear();
+    }
+
+    public void RechargeScene()
+    {
+        //State that the game is newly generated
+        loadedGame = false;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        time = 1f;
+        Time.timeScale = time;
+
+        if (GameObject.Find("CanvasPause") != null)
+        {
+            GameObject.Find("CanvasPause").GetComponent<Canvas>().enabled = false;
+        }
+        canvasPause = false;
+        TurnManager.units.Clear();
+        TurnManager.turnKey.Clear();
+        TurnManager.turnTeam.Clear();
+
+        ActionScript.players.Clear();
+        ActionScript.enemies.Clear();
     }
 
     public void MainMenu()
@@ -97,6 +169,9 @@ public class SceneScript : MonoBehaviour
         TurnManager.units.Clear();
         TurnManager.turnKey.Clear();
         TurnManager.turnTeam.Clear();
+
+        ActionScript.players.Clear();
+        ActionScript.enemies.Clear();
     }
 
     public void ExitGame()
@@ -224,7 +299,6 @@ public class SceneScript : MonoBehaviour
 
 		//Fill data
 		//data.scene = scene;
-		UnityEngine.Debug.Log("Current SCENE: " + SceneManager.GetActiveScene().buildIndex);
 		data.scene = SceneManager.GetActiveScene().buildIndex;
 
 		GameObject[] players = GameObject.FindGameObjectsWithTag("player");
