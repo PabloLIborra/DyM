@@ -1,27 +1,7 @@
-# Blender MTL File: 'None'
-# Material Count: 3
+# Blender MTL File: 'tilesapilaos.blend'
+# Material Count: 1
 
-newmtl Brass
-Ns 96.078431
-Ka 1.000000 1.000000 1.000000
-Kd 0.560882 0.456900 0.169785
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.000000
-d 1.000000
-illum 2
-
-newmtl DarkMetal
-Ns 96.078431
-Ka 1.000000 1.000000 1.000000
-Kd 0.138685 0.138685 0.138685
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.000000
-d 1.000000
-illum 2
-
-newmtl Tierra_2.003
+newmtl Material.010
 Ns 96.078431
 Ka 1.000000 1.000000 1.000000
 Kd 0.640000 0.640000 0.640000
@@ -30,3 +10,4 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
+map_Kd textures\obstacle_3.png
