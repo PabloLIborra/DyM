@@ -226,7 +226,7 @@ public class SceneScript : MonoBehaviour
                 }
             }
 
-            GameObject saveButton = canvas.transform.FindChild("Save").gameObject;
+            GameObject saveButton = canvas.transform.Find("Save").gameObject;
             if (block == false)
             {
                 if(saveButton != null)
