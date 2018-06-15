@@ -41,7 +41,7 @@ public class StatsScript : MonoBehaviour
             if (gameObject.transform.rotation.eulerAngles.x <= 300 && gameObject.transform.rotation.eulerAngles.x > 0)
             {
 				
-                if(gameObject.GetComponent<ActionScript>() != null)
+                if(gameObject.GetComponent<ActionScript>() != null && gameObject.GetComponent<ActionScript>().currentTile != null)
                 {
                     gameObject.GetComponent<ActionScript>().currentTile.Restart(gameObject, true);
                 }
