@@ -113,7 +113,7 @@ public class SceneScript : MonoBehaviour
         //State that the game is newly generated
         loadedGame = false;
 
-        SceneManager.LoadScene("Lvl1");
+        SceneManager.LoadScene("Tutorial");
         time = 1f;
         Time.timeScale = time;
 

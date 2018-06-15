@@ -58,6 +58,7 @@ public class ActionScript : MonoBehaviour
 
     protected bool checkHealth()
     {
+        //DEFEAT
         int countKills = 0;
         foreach (var player in players)
         {
@@ -77,6 +78,7 @@ public class ActionScript : MonoBehaviour
             return true;
         }
 
+        //VICTORY
         countKills = 0;
         foreach (var enemy in enemies)
         {
