@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 950245030}
   - component: {fileID: 950245029}
   m_Layer: 0
-  m_Name: Cargar Partida
+  m_Name: Cargar Partida Menu Boton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

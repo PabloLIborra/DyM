@@ -6,6 +6,9 @@ public class NPCActionScript : ActionScript {
 
     GameObject target;
 
+    bool distAttack = false;
+    bool meleAttack = false;
+
     private void Start()
     {
         Init();
@@ -33,19 +36,41 @@ public class NPCActionScript : ActionScript {
                     }
                     else if (attacking)
                     {
-                        Attack();
+                        if(distAttack)
+                        {
+                            DistAttack();
+                            distAttack = false;
+                        }
+                        else if (meleAttack)
+                        {
+                            MeleAttack();
+                            meleAttack = false;
+                        }
                     }
                 }
                 else
                 {
                     FindNearestTarget();
-                    FindAttackTile();
+                    FindDistAttackTile();
                     Tile TargetTile = GetTargetTile(target);
-                    if (TargetTile.attack && stamina >= attackCost)
+                    if (TargetTile.attack && stamina >= distAttackCost && meleAttack == false)
                     {
-                        AttackToTile(TargetTile);
+                        DistAttackToTile(TargetTile);
+                        distAttack = true;
                     }
-                    else if (!moving)
+
+                    if(distAttack == false && meleAttackDo == false)
+                    {
+                        FindAttackTile();
+                        TargetTile = GetTargetTile(target);
+                        if (TargetTile.attack && stamina >= meleAttackCost)
+                        {
+                            MeleAttackToTile(TargetTile);
+                            meleAttack = true;
+                        }
+                    }
+
+                    if (!moving && distAttack == false && meleAttack == false)
                     {
                         CalculatePath();
                         FindGoTile();
