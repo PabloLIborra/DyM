@@ -12,6 +12,7 @@ ModelImporter:
     100012: Diablo_safe3
     100014: Cylinder_000
     100016: Cylinder_001
+    100018: Cylinder
     400000: //RootNode
     400002: Cube
     400004: Field
@@ -21,8 +22,10 @@ ModelImporter:
     400012: Diablo_safe3
     400014: Cylinder_000
     400016: Cylinder_001
+    400018: Cylinder
     2100000: unnamed
     2100002: Plastic
+    2100004: Plastic_001
     2300000: Cube
     2300002: Diablo
     2300004: Diablo_safe
@@ -30,6 +33,7 @@ ModelImporter:
     2300008: Diablo_safe3
     2300010: Cylinder_000
     2300012: Cylinder_001
+    2300014: Cylinder
     3300000: Cube
     3300002: Diablo
     3300004: Diablo_safe
@@ -37,6 +41,7 @@ ModelImporter:
     3300008: Diablo_safe3
     3300010: Cylinder_000
     3300012: Cylinder_001
+    3300014: Cylinder
     4300000: Cube
     4300002: Diablo_safe2
     4300004: Diablo_safe
@@ -44,6 +49,7 @@ ModelImporter:
     4300008: Diablo_safe3
     4300010: Cylinder_000
     4300012: Cylinder_001
+    4300014: Cylinder
     7400000: Default Take
     9500000: //RootNode
     2186277476908879412: ImportLogs
