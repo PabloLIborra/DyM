@@ -1453,7 +1453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683afc550bbecb142849e05791de4dc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 80
+  health: 200
   healthMax: 200
   healthBar: {fileID: 1063571155}
   stamina: 2
@@ -1476,7 +1476,7 @@ MonoBehaviour:
   turn: 0
   move: 2
   distJump: 1
-  distMeleAttack: 2
+  distMeleAttack: 1
   distDistanceAttack: 5
   moveSpeed: 6
   moving: 0
@@ -1608,6 +1608,16 @@ Prefab:
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 769894700}
+    - target: {fileID: 114751535831185624, guid: 6cb752d49321a3d4a8747b44ee4a51af,
+        type: 2}
+      propertyPath: meleAttackDmg
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114751535831185624, guid: 6cb752d49321a3d4a8747b44ee4a51af,
+        type: 2}
+      propertyPath: distAttackDmg
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cb752d49321a3d4a8747b44ee4a51af, type: 2}
   m_IsPrefabParent: 0
@@ -2488,6 +2498,16 @@ Prefab:
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 769894700}
+    - target: {fileID: 114751535831185624, guid: 6cb752d49321a3d4a8747b44ee4a51af,
+        type: 2}
+      propertyPath: meleAttackDmg
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114751535831185624, guid: 6cb752d49321a3d4a8747b44ee4a51af,
+        type: 2}
+      propertyPath: distAttackDmg
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cb752d49321a3d4a8747b44ee4a51af, type: 2}
   m_IsPrefabParent: 0
