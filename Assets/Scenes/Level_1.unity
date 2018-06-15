@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657725, g: 0.4964124, b: 0.57481927, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657725, g: 0.49641222, b: 0.5748182, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2462,6 +2462,106 @@ Prefab:
     - target: {fileID: 4431455154709858, guid: b9e16d962947117489f94d22431f67ce, type: 2}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114643251830958716, guid: b9e16d962947117489f94d22431f67ce,
+        type: 2}
+      propertyPath: obstacle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114737793804003854, guid: b9e16d962947117489f94d22431f67ce,
+        type: 2}
+      propertyPath: obstacle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114874423549273916, guid: b9e16d962947117489f94d22431f67ce,
+        type: 2}
+      propertyPath: obstacle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114302034685355438, guid: b9e16d962947117489f94d22431f67ce,
+        type: 2}
+      propertyPath: obstacle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114893115861899316, guid: b9e16d962947117489f94d22431f67ce,
+        type: 2}
+      propertyPath: obstacle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114088808091958164, guid: b9e16d962947117489f94d22431f67ce,
+        type: 2}
+      propertyPath: obstacle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114671001359540474, guid: b9e16d962947117489f94d22431f67ce,
+        type: 2}
+      propertyPath: obstacle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114866366837643894, guid: b9e16d962947117489f94d22431f67ce,
+        type: 2}
+      propertyPath: obstacle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114844772069739700, guid: b9e16d962947117489f94d22431f67ce,
+        type: 2}
+      propertyPath: obstacle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114696041308640166, guid: b9e16d962947117489f94d22431f67ce,
+        type: 2}
+      propertyPath: obstacle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114930113446412274, guid: b9e16d962947117489f94d22431f67ce,
+        type: 2}
+      propertyPath: obstacle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114240062537859960, guid: b9e16d962947117489f94d22431f67ce,
+        type: 2}
+      propertyPath: obstacle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114624889317169276, guid: b9e16d962947117489f94d22431f67ce,
+        type: 2}
+      propertyPath: obstacle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114783452925459590, guid: b9e16d962947117489f94d22431f67ce,
+        type: 2}
+      propertyPath: obstacle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114746373102228198, guid: b9e16d962947117489f94d22431f67ce,
+        type: 2}
+      propertyPath: obstacle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114738195773094218, guid: b9e16d962947117489f94d22431f67ce,
+        type: 2}
+      propertyPath: obstacle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114254630386622150, guid: b9e16d962947117489f94d22431f67ce,
+        type: 2}
+      propertyPath: obstacle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114384570300385664, guid: b9e16d962947117489f94d22431f67ce,
+        type: 2}
+      propertyPath: obstacle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114282939711055588, guid: b9e16d962947117489f94d22431f67ce,
+        type: 2}
+      propertyPath: obstacle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114605083413525584, guid: b9e16d962947117489f94d22431f67ce,
+        type: 2}
+      propertyPath: obstacle
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b9e16d962947117489f94d22431f67ce, type: 2}
