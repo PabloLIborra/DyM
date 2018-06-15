@@ -23,6 +23,7 @@ public class NPCActionScript : ActionScript {
             int stamina = gameObject.GetComponent<StatsScript>().stamina;
             if (stamina <= 0.0 && moving == false && attacking == false && turn)
             {
+                Debug.Log("si");
                 this.GetComponent<StatsScript>().ResetStamina();
                 TurnManager.EndTurn();
             }
@@ -48,19 +49,22 @@ public class NPCActionScript : ActionScript {
                 }
                 else
                 {
-                    FindNearestTarget();
-                    FindDistAttackTile();
-                    Tile TargetTile = GetTargetTile(target);
-                    if (TargetTile.attack && stamina >= distAttackCost && meleAttack == false)
+                    if (distAttack == false)
                     {
-                        DistAttackToTile(TargetTile);
-                        distAttack = true;
+                        FindNearestTarget();
+                        FindDistAttackTile();
+                        Tile TargetTile = GetTargetTile(target);
+                        if (TargetTile.attack && stamina >= distAttackCost && meleAttack == false)
+                        {
+                            DistAttackToTile(TargetTile);
+                            distAttack = true;
+                        }
                     }
-
-                    if(distAttack == false && meleAttackDo == false)
+                    
+                    if(distAttack == false)
                     {
                         FindAttackTile();
-                        TargetTile = GetTargetTile(target);
+                        Tile TargetTile = GetTargetTile(target);
                         if (TargetTile.attack && stamina >= meleAttackCost)
                         {
                             MeleAttackToTile(TargetTile);
