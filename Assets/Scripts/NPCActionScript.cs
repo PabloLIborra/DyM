@@ -23,7 +23,6 @@ public class NPCActionScript : ActionScript {
             int stamina = gameObject.GetComponent<StatsScript>().stamina;
             if (stamina <= 0.0 && moving == false && attacking == false && turn)
             {
-                Debug.Log("si");
                 this.GetComponent<StatsScript>().ResetStamina();
                 TurnManager.EndTurn();
             }

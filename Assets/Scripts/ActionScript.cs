@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.UIElements;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ActionScript : MonoBehaviour
 {
@@ -95,6 +96,11 @@ public class ActionScript : MonoBehaviour
             Canvas endCanvas = GameObject.Find("EndMatchCanvas").GetComponent<Canvas>();
             endCanvas.enabled = true;
             endCanvas.transform.GetChild(0).gameObject.SetActive(true);
+            if(SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCount-1)
+            {
+                GameObject nextScene = GameObject.FindGameObjectWithTag("NextLevelButton");
+                nextScene.GetComponent<Button>().interactable = false;
+            }
             return true;
         }
         return false;

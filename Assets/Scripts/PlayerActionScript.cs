@@ -86,6 +86,7 @@ public class PlayerActionScript : ActionScript
                     DistAttack();
                     GameObject.FindGameObjectWithTag("Attack Button").GetComponent<Button>().interactable = false;
                     GameObject.FindGameObjectWithTag("Walk Button").GetComponent<Button>().interactable = false;
+                    GameObject.FindGameObjectWithTag("Dist Attack Button").GetComponent<Button>().interactable = false;
                 }
 
                 if (lastMove == true && attacking == false)
