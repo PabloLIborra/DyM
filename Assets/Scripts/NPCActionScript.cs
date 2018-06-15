@@ -23,6 +23,10 @@ public class NPCActionScript : ActionScript {
             int stamina = gameObject.GetComponent<StatsScript>().stamina;
             if (stamina <= 0.0 && moving == false && attacking == false && turn)
             {
+                moving = false;
+                distAttack = false;
+                attacking = false;
+                meleAttack = false;
                 this.GetComponent<StatsScript>().ResetStamina();
                 TurnManager.EndTurn();
             }
@@ -75,7 +79,20 @@ public class NPCActionScript : ActionScript {
                     {
                         CalculatePath();
                         FindGoTile();
-                        actualTargetTile.target = true;
+                        if(actualTargetTile != null)
+                        {
+                            actualTargetTile.target = true;
+                        }
+                        else
+                        {
+                            this.GetComponent<StatsScript>().ResetStamina();
+                            moving = false;
+                            distAttack = false;
+                            attacking = false;
+                            meleAttack = false;
+                            RemoveSelectableTiles();
+                            TurnManager.EndTurn();
+                        }
                     }
                 }
 

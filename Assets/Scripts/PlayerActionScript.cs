@@ -104,6 +104,7 @@ public class PlayerActionScript : ActionScript
 
     public void clickedWalk()
     {
+        Debug.Log(turn);
         if (!moving && attackButton == false && distAttackButton == false && Time.timeScale > 0 && turn)
         {
             if (walkButton == false)
@@ -159,6 +160,8 @@ public class PlayerActionScript : ActionScript
             attackButton = false;
             walkButton = false;
             distAttackButton = false;
+            meleAttackDo = false;
+
             GameObject.FindGameObjectWithTag("Attack Button").GetComponent<Button>().interactable = true;
             GameObject.FindGameObjectWithTag("Dist Attack Button").GetComponent<Button>().interactable = true;
             GameObject.FindGameObjectWithTag("Walk Button").GetComponent<Button>().interactable = true;
@@ -285,6 +288,11 @@ public class PlayerActionScript : ActionScript
         {
             warningTrack.GetComponent<Image>().enabled = false;
         }
+        GameObject distAttackButton = GameObject.FindGameObjectWithTag("Dist Attack Button");
+        if (distAttackButton != null)
+        {
+            distAttackButton.GetComponent<Button>().interactable = true;
+        }
     }
 
     public static void ButtonTrackingLost()
@@ -327,6 +335,14 @@ public class PlayerActionScript : ActionScript
             if (warning != null)
             {
                 warning.GetComponent<Image>().enabled = true;
+            }
+        }
+        GameObject[] distAttackButton = GameObject.FindGameObjectsWithTag("Dist Attack Button");
+        foreach (var attack in distAttackButton)
+        {
+            if (attack != null)
+            {
+                attack.GetComponent<Button>().interactable = false;
             }
         }
     }

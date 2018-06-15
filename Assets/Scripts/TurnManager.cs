@@ -74,11 +74,14 @@ public class TurnManager : MonoBehaviour {
 	}
 
 	public static void AddUnit(ActionScript unit)
-	{
+    {
+        //Debug.Log(units["player"].Count);
+        Debug.Log("Hola");
 		List<ActionScript> list;
 		if(!units.ContainsKey(unit.tag))
-		{
-			list = new List<ActionScript>();
+        {
+            Debug.Log("adios");
+            list = new List<ActionScript>();
 			units[unit.tag] = list;
 
 			if(!turnKey.Contains(unit.tag))

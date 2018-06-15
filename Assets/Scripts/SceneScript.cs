@@ -258,7 +258,7 @@ public class SceneScript : MonoBehaviour
 	{
         //Reading files
         BinaryFormatter bf = new BinaryFormatter (); 									  //Transcription to binary
-		FileStream f = File.Open(Application.dataPath + "/Save/Game.dat", FileMode.Open); //File reading
+		FileStream f = File.Open(Application.persistentDataPath + "/Game.dat", FileMode.Open); //File reading
 
 		//Read data
 		GameData data = (GameData) bf.Deserialize(f);
@@ -280,7 +280,7 @@ public class SceneScript : MonoBehaviour
 	//Check if file exists
 	public bool checkFileExists()
 	{
-		if (File.Exists (Application.dataPath + "/Save/Game.dat")) {
+		if (File.Exists (Application.persistentDataPath + "/Game.dat")) {
 			return true;
 		}
 
@@ -291,7 +291,7 @@ public class SceneScript : MonoBehaviour
 	public void LoadGameData()
 	{
 		//Check existence
-		if(File.Exists(Application.dataPath + "/Save/Game.dat"))
+		if(File.Exists(Application.persistentDataPath + "/Game.dat"))
 		{
 			//Clean all tiles before reassigning positions
 			GameObject[] tiles = GameObject.FindGameObjectsWithTag("Tile");
@@ -301,7 +301,7 @@ public class SceneScript : MonoBehaviour
 
 			//Reading files
 			BinaryFormatter bf = new BinaryFormatter (); 									  //Transcription to binary
-			FileStream f = File.Open(Application.dataPath + "/Save/Game.dat", FileMode.Open); //File reading
+			FileStream f = File.Open(Application.persistentDataPath + "/Game.dat", FileMode.Open); //File reading
 
 			//Read data
 			GameData data = (GameData) bf.Deserialize(f);
@@ -345,7 +345,7 @@ public class SceneScript : MonoBehaviour
 	{
 		//Open data readers
 		BinaryFormatter bf = new BinaryFormatter (); 					     //Transcription to binary
-		FileStream f = File.Create(Application.dataPath + "/Save/Game.dat"); //File reading
+		FileStream f = File.Create(Application.persistentDataPath + "/Game.dat"); //File reading
 
 		//Create data file
 		GameData data = new GameData();

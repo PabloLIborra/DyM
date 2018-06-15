@@ -48,7 +48,7 @@ public class ActionScript : MonoBehaviour
         tiles = GameObject.FindGameObjectsWithTag("Tile");
 
         half = this.GetComponent<Collider>().bounds.extents.y;
-
+        Debug.Log(gameObject);
         TurnManager.AddUnit(this);
         
         currentTile = GetTargetTile(gameObject);
@@ -76,6 +76,8 @@ public class ActionScript : MonoBehaviour
             Canvas endCanvas = GameObject.Find("EndMatchCanvas").GetComponent<Canvas>();
             endCanvas.enabled = true;
             endCanvas.transform.GetChild(1).gameObject.SetActive(true);
+            moving = false;
+            attacking = false;
             return true;
         }
 
@@ -103,6 +105,8 @@ public class ActionScript : MonoBehaviour
                 GameObject nextScene = GameObject.Find("NextLevelButton");
                 nextScene.GetComponent<Button>().interactable = false;
             }
+            moving = false;
+            attacking = false;
             return true;
         }
         return false;

@@ -38,7 +38,10 @@ public class StatsScript : MonoBehaviour
         {
             if (gameObject.transform.rotation.eulerAngles.x <= 300 && gameObject.transform.rotation.eulerAngles.x > 0)
             {
-                gameObject.GetComponent<ActionScript>().currentTile.Restart(gameObject, true);
+                if(gameObject.GetComponent<ActionScript>() != null)
+                {
+                    gameObject.GetComponent<ActionScript>().currentTile.Restart(gameObject, true);
+                }
                 gameObject.SetActive(false);
             }
             else
@@ -59,6 +62,8 @@ public class StatsScript : MonoBehaviour
             else
             {
                 health = 0;
+                List<ActionScript> unit = TurnManager.units["player"];
+                unit.Remove(gameObject.GetComponent<ActionScript>());
                 gameObject.SetActive(false);
             }
 
@@ -74,6 +79,10 @@ public class StatsScript : MonoBehaviour
             else
             {
                 health = 0;
+                List<ActionScript> unit = TurnManager.units["player"];
+                unit.Remove(gameObject.GetComponent<ActionScript>());
+                gameObject.SetActive(false);
+
             }
             damage = 0;
             health = (float)Math.Round(health, 0);
