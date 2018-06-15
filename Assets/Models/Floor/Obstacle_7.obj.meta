@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 09e6930366d0f39469e8d48bcf9098f5
+guid: 0d8b6ec5ff8d05b46aafe51aae8be723
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -7,9 +7,9 @@ ModelImporter:
     100002: //RootNode
     400000: default
     400002: //RootNode
-    2100000: Tierra_2.010
-    2100002: Piedra_3_1
-    2100004: Piedra_3.003
+    2100000: Tierra_2.011
+    2100002: Piedra3_2.003
+    2100004: Material.013
     2300000: default
     3300000: default
     4300000: default
